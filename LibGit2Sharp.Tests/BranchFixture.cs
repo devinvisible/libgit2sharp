@@ -40,8 +40,8 @@ namespace LibGit2Sharp.Tests
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
                                   "branch: Created from " + committish,
-                                  newBranch.Tip.Id,
                                   null,
+                                  newBranch.Tip.Id,
                                   Constants.Signature);
 
                 repo.Branches.Remove(newBranch.Name);
@@ -1038,8 +1038,8 @@ namespace LibGit2Sharp.Tests
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
                                   string.Format("branch: renamed {0} to {1}", br2.CanonicalName, newBranch.CanonicalName),
-                                  newBranch.Tip.Id,
                                   test.Tip.Id,
+                                  newBranch.Tip.Id,
                                   Constants.Signature);
             }
         }
