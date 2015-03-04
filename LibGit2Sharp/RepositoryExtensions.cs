@@ -161,16 +161,13 @@ namespace LibGit2Sharp
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="resetMode">Flavor of reset operation to perform.</param>
         /// <param name="committish">A revparse spec for the target commit object.</param>
-        /// <param name="signature">Identification for use when updating the reflog</param>
-        /// <param name="logMessage">Message to append to the reflog</param>
-        public static void Reset(this IRepository repository, ResetMode resetMode, string committish = "HEAD",
-            Signature signature = null, string logMessage = null)
+        public static void Reset(this IRepository repository, ResetMode resetMode, string committish = "HEAD")
         {
             Ensure.ArgumentNotNullOrEmptyString(committish, "committish");
 
             Commit commit = LookUpCommit(repository, committish);
 
-            repository.Reset(resetMode, commit, signature, logMessage);
+            repository.Reset(resetMode, commit);
         }
 
         /// <summary>
@@ -533,7 +530,7 @@ namespace LibGit2Sharp
         /// <param name="commit">The target commit object.</param>
         public static void Reset(this IRepository repository, ResetMode resetMode, Commit commit)
         {
-            repository.Reset(resetMode, commit, null, null);
+            repository.Reset(resetMode, commit);
         }
 
         /// <summary>

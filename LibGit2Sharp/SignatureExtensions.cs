@@ -14,9 +14,9 @@ namespace LibGit2Sharp
         /// <param name="signature">The signature to test</param>
         /// <param name="config">The configuration to query for default values</param>
         /// <returns>A valid <see cref="Signature"/></returns>
-        public static Signature OrDefault(this Signature signature, Configuration config)
-        {
-            return signature ?? config.BuildSignature(DateTimeOffset.Now);
-        }
+        //public static Signature OrDefault(this Signature signature, Configuration config)
+        //{
+        //    return signature ?? config.BuildSignature(DateTimeOffset.Now);
+        //}
     }
 }

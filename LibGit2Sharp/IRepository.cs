@@ -166,9 +166,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="resetMode">Flavor of reset operation to perform.</param>
         /// <param name="commit">The target commit object.</param>
-        /// <param name="signature">Identity for use when updating the reflog.</param>
-        /// <param name="logMessage">Message to use when updating the reflog.</param>
-        void Reset(ResetMode resetMode, Commit commit, Signature signature, string logMessage);
+        void Reset(ResetMode resetMode, Commit commit);
 
         /// <summary>
         /// Replaces entries in the <see cref="Repository.Index"/> with entries from the specified commit.
