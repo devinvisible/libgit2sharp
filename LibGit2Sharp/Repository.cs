@@ -604,9 +604,8 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="committishOrBranchSpec">A revparse spec for the commit or branch to checkout.</param>
         /// <param name="options"><see cref="CheckoutOptions"/> controlling checkout behavior.</param>
-        /// <param name="signature">Identity for use when updating the reflog.</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public Branch Checkout(string committishOrBranchSpec, CheckoutOptions options, Signature signature)
+        public Branch Checkout(string committishOrBranchSpec, CheckoutOptions options)
         {
             Ensure.ArgumentNotNullOrEmptyString(committishOrBranchSpec, "committishOrBranchSpec");
             Ensure.ArgumentNotNull(options, "options");
@@ -628,7 +627,7 @@ namespace LibGit2Sharp
                     if (reference.IsLocalBranch())
                     {
                         Branch branch = Branches[reference.CanonicalName];
-                        return Checkout(branch, options, signature);
+                        return Checkout(branch, options);
                     }
                 }
 
@@ -642,7 +641,7 @@ namespace LibGit2Sharp
             }
 
             Commit commit = obj.DereferenceToCommit(true);
-            Checkout(commit.Tree, options, commit.Id.Sha, committishOrBranchSpec, signature);
+            Checkout(commit.Tree, options, commit.Id.Sha, committishOrBranchSpec);
 
             return Head;
         }
@@ -654,9 +653,8 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="branch">The <see cref="Branch"/> to check out.</param>
         /// <param name="options"><see cref="CheckoutOptions"/> controlling checkout behavior.</param>
-        /// <param name="signature">Identity for use when updating the reflog.</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public Branch Checkout(Branch branch, CheckoutOptions options, Signature signature)
+        public Branch Checkout(Branch branch, CheckoutOptions options)
         {
             Ensure.ArgumentNotNull(branch, "branch");
             Ensure.ArgumentNotNull(options, "options");
@@ -673,11 +671,11 @@ namespace LibGit2Sharp
                 string.Equals(Refs[branch.CanonicalName].TargetIdentifier, branch.Tip.Id.Sha,
                 StringComparison.OrdinalIgnoreCase))
             {
-                Checkout(branch.Tip.Tree, options, branch.CanonicalName, branch.Name, signature);
+                Checkout(branch.Tip.Tree, options, branch.CanonicalName, branch.Name);
             }
             else
             {
-                Checkout(branch.Tip.Tree, options, branch.Tip.Id.Sha, branch.Name, signature);
+                Checkout(branch.Tip.Tree, options, branch.Tip.Id.Sha, branch.Name);
             }
 
             return Head;
@@ -691,14 +689,13 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="commit">The <see cref="LibGit2Sharp.Commit"/> to check out.</param>
         /// <param name="options"><see cref="CheckoutOptions"/> controlling checkout behavior.</param>
-        /// <param name="signature">Identity for use when updating the reflog.</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public Branch Checkout(Commit commit, CheckoutOptions options, Signature signature)
+        public Branch Checkout(Commit commit, CheckoutOptions options)
         {
             Ensure.ArgumentNotNull(commit, "commit");
             Ensure.ArgumentNotNull(options, "options");
 
-            Checkout(commit.Tree, options, commit.Id.Sha, commit.Id.Sha, signature);
+            Checkout(commit.Tree, options, commit.Id.Sha, commit.Id.Sha);
 
             return Head;
         }
@@ -711,17 +708,16 @@ namespace LibGit2Sharp
         /// <param name="checkoutOptions"><see cref="CheckoutOptions"/> controlling checkout behavior.</param>
         /// <param name="headTarget">Target for the new HEAD.</param>
         /// <param name="refLogHeadSpec">The spec which will be written as target in the reflog.</param>
-        /// <param name="signature">Identity for use when updating the reflog.</param>
         private void Checkout(
             Tree tree,
             CheckoutOptions checkoutOptions,
-            string headTarget, string refLogHeadSpec, Signature signature)
+            string headTarget, string refLogHeadSpec)
         {
             var previousHeadName = Info.IsHeadDetached ? Head.Tip.Sha : Head.Name;
 
             CheckoutTree(tree, null, checkoutOptions);
 
-            Refs.UpdateTarget("HEAD", headTarget, signature,
+            Refs.UpdateTarget("HEAD", headTarget,
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "checkout: moving from {0} to {1}", previousHeadName, refLogHeadSpec));
@@ -895,7 +891,7 @@ namespace LibGit2Sharp
             {
                 if (reference is DirectReference)
                 {
-                    Refs.UpdateTarget(reference, commit.Id, commit.Committer, reflogMessage);
+                    Refs.UpdateTarget(reference, commit.Id, reflogMessage);
                     return;
                 }
 
@@ -905,7 +901,7 @@ namespace LibGit2Sharp
 
                 if (reference == null)
                 {
-                    Refs.Add(symRef.TargetIdentifier, commit.Id, commit.Committer, reflogMessage);
+                    Refs.Add(symRef.TargetIdentifier, commit.Id, reflogMessage);
                     return;
                 }
             }
@@ -1269,7 +1265,7 @@ namespace LibGit2Sharp
                             throw new LibGit2SharpException("Unable to perform Fast-Forward merge with mith multiple merge heads.");
                         }
 
-                        mergeResult = FastForwardMerge(annotatedCommits[0], merger, options);
+                        mergeResult = FastForwardMerge(annotatedCommits[0], options);
                     }
                     else if (mergeAnalysis.HasFlag(GitMergeAnalysis.GIT_MERGE_ANALYSIS_NORMAL))
                     {
@@ -1285,7 +1281,7 @@ namespace LibGit2Sharp
                             throw new LibGit2SharpException("Unable to perform Fast-Forward merge with mith multiple merge heads.");
                         }
 
-                        mergeResult = FastForwardMerge(annotatedCommits[0], merger, options);
+                        mergeResult = FastForwardMerge(annotatedCommits[0], options);
                     }
                     else
                     {
@@ -1365,10 +1361,9 @@ namespace LibGit2Sharp
         /// Perform a fast-forward merge.
         /// </summary>
         /// <param name="annotatedCommit">The merge head handle to fast-forward merge.</param>
-        /// <param name="merger">The <see cref="Signature"/> of who is performing the merge.</param>
         /// <param name="options">Options controlling merge behavior.</param>
         /// <returns>The <see cref="MergeResult"/> of the merge.</returns>
-        private MergeResult FastForwardMerge(GitAnnotatedCommitHandle annotatedCommit, Signature merger, MergeOptions options)
+        private MergeResult FastForwardMerge(GitAnnotatedCommitHandle annotatedCommit, MergeOptions options)
         {
             ObjectId id = Proxy.git_annotated_commit_id(annotatedCommit);
             Commit fastForwardCommit = (Commit) Lookup(id, ObjectType.Commit);
@@ -1385,12 +1380,12 @@ namespace LibGit2Sharp
             if (reference == null)
             {
                 // Reference does not exist, create it.
-                Refs.Add(Refs.Head.TargetIdentifier, fastForwardCommit.Id, merger, refLogEntry);
+                Refs.Add(Refs.Head.TargetIdentifier, fastForwardCommit.Id, refLogEntry);
             }
             else
             {
                 // Update target reference.
-                Refs.UpdateTarget(reference, fastForwardCommit.Id.Sha, merger, refLogEntry);
+                Refs.UpdateTarget(reference, fastForwardCommit.Id.Sha, refLogEntry);
             }
 
             return new MergeResult(MergeStatus.FastForward, fastForwardCommit);

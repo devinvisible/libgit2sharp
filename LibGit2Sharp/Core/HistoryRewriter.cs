@@ -108,7 +108,7 @@ namespace LibGit2Sharp.Core
             {
                 return RewriteReference(
                     sref, old => old.Target, RewriteReference,
-                    (refs, old, target, sig, logMessage) => refs.UpdateTarget(old, target, sig, logMessage));
+                    (refs, old, target, sig, logMessage) => refs.UpdateTarget(old, target, logMessage));
             }
 
             var dref = reference as DirectReference;
@@ -116,7 +116,7 @@ namespace LibGit2Sharp.Core
             {
                 return RewriteReference(
                     dref, old => old.Target, RewriteTarget,
-                    (refs, old, target, sig, logMessage) => refs.UpdateTarget(old, target.Id, sig, logMessage));
+                    (refs, old, target, sig, logMessage) => refs.UpdateTarget(old, target.Id, logMessage));
             }
 
             return reference;
@@ -163,13 +163,13 @@ namespace LibGit2Sharp.Core
                         oldRef.CanonicalName, backupName));
             }
 
-            repo.Refs.Add(backupName, oldRef.TargetIdentifier, signature, "filter-branch: backup");
+            repo.Refs.Add(backupName, oldRef.TargetIdentifier, "filter-branch: backup");
             rollbackActions.Enqueue(() => repo.Refs.Remove(backupName));
 
             if (newTarget == null)
             {
                 repo.Refs.Remove(oldRef);
-                rollbackActions.Enqueue(() => repo.Refs.Add(oldRef.CanonicalName, oldRef, signature, "filter-branch: abort", true));
+                rollbackActions.Enqueue(() => repo.Refs.Add(oldRef.CanonicalName, oldRef, "filter-branch: abort", true));
                 return refMap[oldRef] = null;
             }
 

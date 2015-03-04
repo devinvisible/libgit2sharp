@@ -121,11 +121,9 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="branchName">The name of the branch to create.</param>
-        /// <param name="signature">Identification for use when updating the reflog</param>
-        /// <param name="logMessage">Message to append to the reflog</param>
-        public static Branch CreateBranch(this IRepository repository, string branchName, Signature signature = null, string logMessage = null)
+        public static Branch CreateBranch(this IRepository repository, string branchName)
         {
-            return CreateBranch(repository, branchName, "HEAD", signature, logMessage);
+            return CreateBranch(repository, branchName, "HEAD");
         }
 
         /// <summary>
@@ -134,11 +132,9 @@ namespace LibGit2Sharp
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="branchName">The name of the branch to create.</param>
         /// <param name="target">The commit which should be pointed at by the Branch.</param>
-        /// <param name="signature">Identification for use when updating the reflog</param>
-        /// <param name="logMessage">Message to append to the reflog</param>
-        public static Branch CreateBranch(this IRepository repository, string branchName, Commit target, Signature signature = null, string logMessage = null)
+        public static Branch CreateBranch(this IRepository repository, string branchName, Commit target)
         {
-            return repository.Branches.Add(branchName, target, signature, logMessage);
+            return repository.Branches.Add(branchName, target);
         }
 
         /// <summary>
@@ -147,11 +143,9 @@ namespace LibGit2Sharp
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="branchName">The name of the branch to create.</param>
         /// <param name="committish">The revparse spec for the target commit.</param>
-        /// <param name="signature">Identification for use when updating the reflog</param>
-        /// <param name="logMessage">Message to append to the reflog</param>
-        public static Branch CreateBranch(this IRepository repository, string branchName, string committish, Signature signature = null, string logMessage = null)
+        public static Branch CreateBranch(this IRepository repository, string branchName, string committish)
         {
-            return repository.Branches.Add(branchName, committish, signature, logMessage);
+            return repository.Branches.Add(branchName, committish);
         }
 
         /// <summary>
@@ -257,12 +251,11 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="commitOrBranchSpec">A revparse spec for the commit or branch to checkout.</param>
-        /// <param name="signature">The identity used for updating the reflog</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public static Branch Checkout(this IRepository repository, string commitOrBranchSpec, Signature signature = null)
+        public static Branch Checkout(this IRepository repository, string commitOrBranchSpec)
         {
             CheckoutOptions options = new CheckoutOptions();
-            return repository.Checkout(commitOrBranchSpec, options, signature);
+            return repository.Checkout(commitOrBranchSpec, options);
         }
 
         /// <summary>
@@ -274,12 +267,11 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="branch">The <see cref="Branch"/> to check out.</param>
-        /// <param name="signature">The identity used for updating the reflog</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public static Branch Checkout(this IRepository repository, Branch branch, Signature signature = null)
+        public static Branch Checkout(this IRepository repository, Branch branch)
         {
             CheckoutOptions options = new CheckoutOptions();
-            return repository.Checkout(branch, options, signature);
+            return repository.Checkout(branch, options);
         }
 
         /// <summary>
@@ -292,10 +284,10 @@ namespace LibGit2Sharp
         /// <param name="commit">The <see cref="LibGit2Sharp.Commit"/> to check out.</param>
         /// <param name="signature">The identity used for updating the reflog</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
-        public static Branch Checkout(this IRepository repository, Commit commit, Signature signature = null)
+        public static Branch Checkout(this IRepository repository, Commit commit)
         {
             CheckoutOptions options = new CheckoutOptions();
-            return repository.Checkout(commit, options, signature);
+            return repository.Checkout(commit, options);
         }
 
         internal static string BuildRelativePathFrom(this Repository repo, string path)
@@ -473,7 +465,7 @@ namespace LibGit2Sharp
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
         public static Branch Checkout(this IRepository repository, Branch branch, CheckoutOptions options)
         {
-            return repository.Checkout(branch, options, null);
+            return repository.Checkout(branch, options);
         }
 
         /// <summary>
@@ -488,7 +480,7 @@ namespace LibGit2Sharp
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
         public static Branch Checkout(this IRepository repository, Commit commit, CheckoutOptions options)
         {
-            return repository.Checkout(commit, options, null);
+            return repository.Checkout(commit, options);
         }
 
         /// <summary>
@@ -504,7 +496,7 @@ namespace LibGit2Sharp
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
         public static Branch Checkout(this IRepository repository, string committishOrBranchSpec, CheckoutOptions options)
         {
-            return repository.Checkout(committishOrBranchSpec, options, null);
+            return repository.Checkout(committishOrBranchSpec, options);
         }
 
         /// <summary>
