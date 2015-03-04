@@ -792,9 +792,9 @@ namespace LibGit2Sharp.Tests
                 Branch newHead = repo.Checkout(repo.Branches["master"]);
 
                 // Assert reflog entry is created
-                AssertRefLogEntry(repo, "HEAD", newHead.Tip.Id,
+                AssertRefLogEntry(repo, "HEAD",
                     string.Format("checkout: moving from {0} to {1}", initialHead.Tip.Sha, newHead.Name),
-                    initialHead.Tip.Id, Constants.Signature);
+                    initialHead.Tip.Id, newHead.Tip.Id, Constants.Signature);
             }
         }
 
@@ -866,8 +866,8 @@ namespace LibGit2Sharp.Tests
                 repo.Checkout(master.Tip.Sha);
 
                 Assert.True(repo.Info.IsHeadDetached);
-                AssertRefLogEntry(repo, "HEAD", master.Tip.Id,
-                    string.Format("checkout: moving from master to {0}", master.Tip.Sha), master.Tip.Id);
+                AssertRefLogEntry(repo, "HEAD",
+                    string.Format("checkout: moving from master to {0}", master.Tip.Sha), master.Tip.Id, master.Tip.Id, Constants.Signature);
 
                 // Checkout detached "HEAD" => nothing should happen
                 reflogEntriesCount = repo.Refs.Log(repo.Refs.Head).Count();

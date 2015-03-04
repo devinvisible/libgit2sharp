@@ -39,8 +39,10 @@ namespace LibGit2Sharp.Tests
                 Assert.NotNull(repo.Branches.SingleOrDefault(p => p.Name.Normalize() == name));
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + committish,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + committish);
+                                  null,
+                                  Constants.Signature);
 
                 repo.Branches.Remove(newBranch.Name);
                 Assert.Null(repo.Branches[name]);
@@ -98,8 +100,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal("be3563ae3f795b2b4353bcce3a527ad0a4f7f644", newBranch.Tip.Sha);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + committish,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + committish);
+                                  Constants.Signature);
             }
         }
 
@@ -126,8 +130,10 @@ namespace LibGit2Sharp.Tests
                 Assert.NotNull(repo.Branches.SingleOrDefault(p => p.Name == name));
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + headCommitOrBranchSpec,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + headCommitOrBranchSpec);
+                                  Constants.Signature);
             }
         }
 
@@ -149,8 +155,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal("32eab9cb1f450b5fe7ab663462b77d7f4b703344", newBranch.Tip.Sha);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + headCommitOrBranchSpec,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + headCommitOrBranchSpec);
+                                  Constants.Signature);
             }
         }
 
@@ -169,8 +177,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal("4c062a6361ae6959e06292c1fa5e2822d9c96345", newBranch.Tip.Sha);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + newBranch.Tip.Sha,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + newBranch.Tip.Sha);
+                                  Constants.Signature);
             }
         }
 
@@ -190,8 +200,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal("9fd738e8f7967c078dceed8190330fc8648ee56a", newBranch.Tip.Sha);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + committish,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + committish);
+                                  Constants.Signature);
             }
         }
 
@@ -212,8 +224,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal("e90810b8df3e80c413d903f631643c716887138d", newBranch.Tip.Sha);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  "branch: Created from " + committish,
+                                  null,
                                   newBranch.Tip.Id,
-                                  "branch: Created from " + committish);
+                                  Constants.Signature);
             }
         }
 
@@ -980,8 +994,10 @@ namespace LibGit2Sharp.Tests
                 Assert.NotNull(repo.Branches["br3"]);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
+                                  string.Format("branch: renamed {0} to {1}", br2.CanonicalName, newBranch.CanonicalName),
+                                  null,
                                   newBranch.Tip.Id,
-                                  string.Format("branch: renamed {0} to {1}", br2.CanonicalName, newBranch.CanonicalName));
+                                  Constants.Signature);
             }
         }
 
@@ -1021,9 +1037,10 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal(br2.Tip, newTest.Tip);
 
                 AssertRefLogEntry(repo, newBranch.CanonicalName,
-                                  newBranch.Tip.Id,
                                   string.Format("branch: renamed {0} to {1}", br2.CanonicalName, newBranch.CanonicalName),
-                                  test.Tip.Id);
+                                  newBranch.Tip.Id,
+                                  test.Tip.Id,
+                                  Constants.Signature);
             }
         }
 
@@ -1133,11 +1150,18 @@ namespace LibGit2Sharp.Tests
             {
                 EnableRefLog(repo);
                 var branch = repo.Branches.Add("foo", repo.Head.Tip);
-                AssertRefLogEntry(repo, branch.CanonicalName, branch.Tip.Id,
-                    string.Format("branch: Created from {0}", repo.Head.Tip.Sha));
+
+                AssertRefLogEntry(repo, branch.CanonicalName,
+                                  string.Format("branch: Created from {0}", repo.Head.Tip.Sha),
+                                  null, branch.Tip.Id,
+                                  Constants.Signature);
 
                 branch = repo.Branches.Add("bar", repo.Head.Tip);
-                AssertRefLogEntry(repo, branch.CanonicalName, repo.Head.Tip.Id, "BAR");
+
+                AssertRefLogEntry(repo, branch.CanonicalName,
+                                  "BAR",
+                                  null, repo.Head.Tip.Id,
+                                  Constants.Signature);
             }
         }
 
@@ -1150,11 +1174,13 @@ namespace LibGit2Sharp.Tests
                 EnableRefLog(repo);
                 var master = repo.Branches["master"];
                 var newMaster = repo.Branches.Rename(master, "new-master");
-                AssertRefLogEntry(repo, newMaster.CanonicalName, newMaster.Tip.Id,
-                    "branch: renamed refs/heads/master to refs/heads/new-master");
+                AssertRefLogEntry(repo, newMaster.CanonicalName, "branch: renamed refs/heads/master to refs/heads/new-master",
+                                  null, newMaster.Tip.Id,
+                                  Constants.Signature);
 
                 newMaster = repo.Branches.Rename(newMaster, "new-master2");
-                AssertRefLogEntry(repo, newMaster.CanonicalName, newMaster.Tip.Id, "MOVE");
+                AssertRefLogEntry(repo, newMaster.CanonicalName, "MOVE", null, newMaster.Tip.Id,
+                                  Constants.Signature);
             }
         }
     }

@@ -118,16 +118,18 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal(FileStatus.Staged, repo.RetrieveStatus("a.txt"));
 
                 AssertRefLogEntry(repo, "HEAD",
-                                  tag.Target.Id,
                                   string.Format("reset: moving to {0}", tag.Target.Sha),
-                                  oldHeadId);
+                                  oldHeadId,
+                                  tag.Target.Id,
+                                  Constants.Signature);
 
                 if (!shouldHeadBeDetached)
                 {
                     AssertRefLogEntry(repo, branch.CanonicalName,
-                                      tag.Target.Id,
                                       string.Format("reset: moving to {0}", tag.Target.Sha),
-                                      oldHeadId);
+                                      oldHeadId,
+                                      tag.Target.Id,
+                                      Constants.Signature);
                 }
 
                 /* Reset --soft the Head to a commit through its sha */
@@ -138,17 +140,17 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal(FileStatus.Unaltered, repo.RetrieveStatus("a.txt"));
 
                 AssertRefLogEntry(repo, "HEAD",
-                                  branch.Tip.Id,
                                   "FOO",
                                   tag.Target.Id,
+                                  branch.Tip.Id,
                                   Constants.Signature);
 
                 if (!shouldHeadBeDetached)
                 {
                     AssertRefLogEntry(repo, branch.CanonicalName,
-                                  branch.Tip.Id,
                                   "FOO",
                                   tag.Target.Id,
+                                  branch.Tip.Id,
                                   Constants.Signature);
                 }
             }
@@ -191,14 +193,16 @@ namespace LibGit2Sharp.Tests
                 Assert.Equal(FileStatus.Modified, repo.RetrieveStatus("a.txt"));
 
                 AssertRefLogEntry(repo, "HEAD",
-                                  tag.Target.Id,
                                   string.Format("reset: moving to {0}", tag.Target.Sha),
-                                  oldHeadId);
+                                  oldHeadId,
+                                  tag.Target.Id,
+                                  Constants.Signature);
 
                 AssertRefLogEntry(repo, "refs/heads/mybranch",
-                                  tag.Target.Id,
                                   string.Format("reset: moving to {0}", tag.Target.Sha),
-                                  oldHeadId);
+                                  oldHeadId,
+                                  tag.Target.Id,
+                                  Constants.Signature);
             }
         }
 

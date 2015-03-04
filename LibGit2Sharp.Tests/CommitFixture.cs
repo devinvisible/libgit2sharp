@@ -822,9 +822,9 @@ namespace LibGit2Sharp.Tests
                 AssertCommitHasBeenAmended(repo, amendedCommit, mergedCommit);
 
                 AssertRefLogEntry(repo, "HEAD",
-                                  amendedCommit.Id,
                                   string.Format("commit (amend): {0}", commitMessage),
                                   mergedCommit.Id,
+                                  amendedCommit.Id,
                                   amendedCommit.Committer);
             }
         }

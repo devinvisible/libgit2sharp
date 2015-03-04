@@ -128,8 +128,9 @@ namespace LibGit2Sharp.Tests
                 AssertRemoteHeadTipEquals(localRepo, second.Sha);
 
                 AssertRefLogEntry(localRepo, "refs/remotes/origin/master",
-                    localRepo.Head.Tip.Id, "update by push",
-                    oldId);
+                    "update by push",
+                    oldId, localRepo.Head.Tip.Id,
+                    Constants.Signature);
             }
         }
 
