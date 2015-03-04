@@ -789,7 +789,7 @@ namespace LibGit2Sharp.Tests
 
                 Assert.True(repo.Info.IsHeadDetached);
 
-                Branch newHead = repo.Checkout(repo.Branches["master"], Constants.Signature);
+                Branch newHead = repo.Checkout(repo.Branches["master"]);
 
                 // Assert reflog entry is created
                 AssertRefLogEntry(repo, "HEAD", newHead.Tip.Id,

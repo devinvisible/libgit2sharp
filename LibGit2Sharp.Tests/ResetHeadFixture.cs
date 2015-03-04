@@ -131,7 +131,7 @@ namespace LibGit2Sharp.Tests
                 }
 
                 /* Reset --soft the Head to a commit through its sha */
-                repo.Reset(ResetMode.Soft, branch.Tip.Sha, Constants.Signature, "FOO");
+                repo.Reset(ResetMode.Soft, branch.Tip.Sha);
                 Assert.Equal(expectedHeadName, repo.Head.Name);
                 Assert.Equal(branch.Tip.Sha, repo.Head.Tip.Sha);
 

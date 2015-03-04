@@ -282,7 +282,6 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repository">The <see cref="Repository"/> being worked with.</param>
         /// <param name="commit">The <see cref="LibGit2Sharp.Commit"/> to check out.</param>
-        /// <param name="signature">The identity used for updating the reflog</param>
         /// <returns>The <see cref="Branch"/> that was checked out.</returns>
         public static Branch Checkout(this IRepository repository, Commit commit)
         {

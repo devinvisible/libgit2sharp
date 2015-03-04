@@ -559,7 +559,7 @@ namespace LibGit2Sharp.Tests
             {
                 Branch master = repo.Branches["master"];
                 const string logMessage = "update target message";
-                repo.Refs.UpdateTarget("refs/remotes/origin/master", "origin/test", Constants.Signature, logMessage);
+                repo.Refs.UpdateTarget("refs/remotes/origin/master", "origin/test", logMessage);
 
                 Assert.True(master.IsTracking);
                 Assert.NotNull(master.TrackedBranch);
@@ -1136,7 +1136,7 @@ namespace LibGit2Sharp.Tests
                 AssertRefLogEntry(repo, branch.CanonicalName, branch.Tip.Id,
                     string.Format("branch: Created from {0}", repo.Head.Tip.Sha));
 
-                branch = repo.Branches.Add("bar", repo.Head.Tip, null, "BAR");
+                branch = repo.Branches.Add("bar", repo.Head.Tip);
                 AssertRefLogEntry(repo, branch.CanonicalName, repo.Head.Tip.Id, "BAR");
             }
         }
@@ -1153,7 +1153,7 @@ namespace LibGit2Sharp.Tests
                 AssertRefLogEntry(repo, newMaster.CanonicalName, newMaster.Tip.Id,
                     "branch: renamed refs/heads/master to refs/heads/new-master");
 
-                newMaster = repo.Branches.Rename(newMaster, "new-master2", null, "MOVE");
+                newMaster = repo.Branches.Rename(newMaster, "new-master2");
                 AssertRefLogEntry(repo, newMaster.CanonicalName, newMaster.Tip.Id, "MOVE");
             }
         }
