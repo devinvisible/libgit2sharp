@@ -96,16 +96,16 @@ namespace LibGit2Sharp.Core
         GIT_CHECKOUT_CONFLICT_STYLE_DIFF3 = (1 << 21),
 
         /// <summary>
- 	    /// Don't overwrite existing files or folders
+        /// Don't overwrite existing files or folders
         /// </summary>
- 	    GIT_CHECKOUT_DONT_REMOVE_EXISTING = (1 << 22),
+        GIT_CHECKOUT_DONT_REMOVE_EXISTING = (1 << 22),
 
         /// <summary>
-    	/// Normally checkout writes the index upon completion; this prevents that.
+        /// Normally checkout writes the index upon completion; this prevents that.
         /// </summary>
-	    GIT_CHECKOUT_DONT_WRITE_INDEX = (1 << 23),
+        GIT_CHECKOUT_DONT_WRITE_INDEX = (1 << 23),
 
- 	    // THE FOLLOWING OPTIONS ARE NOT YET IMPLEMENTED
+        // THE FOLLOWING OPTIONS ARE NOT YET IMPLEMENTED
 
         /// <summary>
         /// Recursively checkout submodules with same options (NOT IMPLEMENTED)
