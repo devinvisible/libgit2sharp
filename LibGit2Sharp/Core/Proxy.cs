@@ -433,27 +433,41 @@ namespace LibGit2Sharp.Core
             NativeMethods.git_config_free(config);
         }
 
+        public static void git_config_entry_free(IntPtr entry)
+        {
+            NativeMethods.git_config_free(entry);
+        }
+
         public static ConfigurationEntry<T> git_config_get_entry<T>(ConfigurationSafeHandle config, string key)
         {
-            GitConfigEntryHandle handle;
+            GitConfigEntryHandle handle = null;
 
             if (!configurationParser.ContainsKey(typeof(T)))
             {
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Generic Argument of type '{0}' is not supported.", typeof(T).FullName));
             }
 
-            using (ThreadAffinity())
+            GitConfigEntry entry;
+
+            try
             {
-                var res = NativeMethods.git_config_get_entry(out handle, config, key);
-                if (res == (int)GitErrorCode.NotFound)
+                using (ThreadAffinity())
                 {
-                    return null;
+                    var res = NativeMethods.git_config_get_entry(out handle, config, key);
+                    if (res == (int)GitErrorCode.NotFound)
+                    {
+                        return null;
+                    }
+
+                    Ensure.ZeroResult(res);
+
+                    entry = handle.MarshalAsGitConfigEntry();
                 }
-
-                Ensure.ZeroResult(res);
             }
-
-            GitConfigEntry entry = handle.MarshalAsGitConfigEntry();
+            finally
+            {
+                handle.SafeDispose();
+            }
 
             return new ConfigurationEntry<T>(LaxUtf8Marshaler.FromNative(entry.namePtr),
                 (T)configurationParser[typeof(T)](LaxUtf8Marshaler.FromNative(entry.valuePtr)),
@@ -1576,10 +1590,9 @@ namespace LibGit2Sharp.Core
         #region git_reference_
 
         public static ReferenceSafeHandle git_reference_create(RepositorySafeHandle repo, string name, ObjectId targetId, bool allowOverwrite,
-            Signature signature, string logMessage)
+            string logMessage)
         {
             using (ThreadAffinity())
-            using (var sigHandle = signature.BuildHandle())
             {
                 GitOid oid = targetId.Oid;
                 ReferenceSafeHandle handle;
@@ -2037,7 +2050,7 @@ namespace LibGit2Sharp.Core
                 Ensure.ZeroResult(res);
             }
         }
-        
+
         public static void git_remote_set_pushurl(RemoteSafeHandle remote, string url)
         {
             using (ThreadAffinity())
