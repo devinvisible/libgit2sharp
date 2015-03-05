@@ -54,17 +54,42 @@ namespace LibGit2Sharp.Tests
             {
                 var configurationSafeHandle = repo.Config.configHandle;
 
+                // Config entry doesn't exist yet
                 ConfigurationSafeHandle snap1;
                 int res1 = NativeMethods.git_config_snapshot(out snap1, configurationSafeHandle);
                 Ensure.ZeroResult(res1);
-                GitConfigEntryHandle handle;
-                var res = NativeMethods.git_config_get_entry(out handle, snap1, "unittests.boolsetting");
+                GitConfigEntryHandle configEntryHandle1;
+                var res = NativeMethods.git_config_get_entry(out configEntryHandle1, snap1, "unittests.boolsetting");
                 Assert.Equal((int)GitErrorCode.NotFound, res);
-                handle.SafeDispose();
+                configEntryHandle1.SafeDispose();
                 snap1.SafeDispose();
 
-                repo.Config.Set("unittests.boolsetting", true);
-                Assert.True(repo.Config.Get<bool>("unittests.boolsetting").Value);
+                // Let's set it
+                ConfigurationSafeHandle levelHandle;
+                int res2 = NativeMethods.git_config_open_level(out levelHandle, configurationSafeHandle,
+                    (uint)ConfigurationLevel.Local);
+                Assert.Equal((int)GitErrorCode.Ok, res2);
+                int res3 = NativeMethods.git_config_set_bool(levelHandle, "unittests.boolsetting", true);
+                Assert.Equal((int)GitErrorCode.Ok, res3);
+                levelHandle.SafeDispose();
+
+
+                // Config entry exists!
+                ConfigurationSafeHandle snap2;
+                int res4 = NativeMethods.git_config_snapshot(out snap2, configurationSafeHandle);
+                Assert.Equal((int)GitErrorCode.Ok, res4);
+
+                GitConfigEntryHandle configEntryHandle2;
+                var res5 = NativeMethods.git_config_get_entry(out configEntryHandle2, snap2, "unittests.boolsetting");
+                Assert.Equal((int)GitErrorCode.Ok, res5);
+                var entry = configEntryHandle2.MarshalAsGitConfigEntry();
+                configEntryHandle2.SafeDispose();
+
+                bool value;
+                var res6 = NativeMethods.git_config_parse_bool(out value, LaxUtf8Marshaler.FromNative(entry.valuePtr));
+                Assert.Equal((int)GitErrorCode.Ok, res6);
+                Assert.True(value);
+                snap2.SafeDispose();
 
                 repo.Config.Unset("unittests.boolsetting");
 

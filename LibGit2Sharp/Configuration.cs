@@ -259,7 +259,7 @@ namespace LibGit2Sharp
             }
         }
 
-        private ConfigurationSafeHandle RetrieveConfigurationHandle(ConfigurationLevel level, bool throwIfStoreHasNotBeenFound, ConfigurationSafeHandle fromHandle)
+        public ConfigurationSafeHandle RetrieveConfigurationHandle(ConfigurationLevel level, bool throwIfStoreHasNotBeenFound, ConfigurationSafeHandle fromHandle)
         {
             ConfigurationSafeHandle handle = null;
             if (fromHandle != null)
@@ -282,7 +282,7 @@ namespace LibGit2Sharp
             return (key, val, handle) => setter(handle, key, (T)val);
         }
 
-        private readonly static IDictionary<Type, Action<string, object, ConfigurationSafeHandle>> configurationTypedUpdater = new Dictionary<Type, Action<string, object, ConfigurationSafeHandle>>
+        public readonly static IDictionary<Type, Action<string, object, ConfigurationSafeHandle>> configurationTypedUpdater = new Dictionary<Type, Action<string, object, ConfigurationSafeHandle>>
         {
             { typeof(int), GetUpdater<int>(Proxy.git_config_set_int32) },
             { typeof(long), GetUpdater<long>(Proxy.git_config_set_int64) },
@@ -375,7 +375,7 @@ namespace LibGit2Sharp
             return defaultValue();
         }
 
-        private ConfigurationSafeHandle Snapshot()
+        public ConfigurationSafeHandle Snapshot()
         {
             return Proxy.git_config_snapshot(configHandle);
         }
