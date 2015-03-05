@@ -18,7 +18,7 @@ namespace LibGit2Sharp
         /// <summary>
         /// Invoked by libgit2 when this backend is no longer needed.
         /// </summary>
-        internal void Free()
+        public void Free()
         {
             if (nativeBackendPointer == IntPtr.Zero)
             {
@@ -149,7 +149,7 @@ namespace LibGit2Sharp
 
         private IntPtr nativeBackendPointer;
 
-        internal IntPtr GitOdbBackendPointer
+        public IntPtr GitOdbBackendPointer
         {
             get
             {
@@ -637,7 +637,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal static long ConverToLong(UIntPtr len)
+        public static long ConverToLong(UIntPtr len)
         {
             if (len.ToUInt64() > long.MaxValue)
             {

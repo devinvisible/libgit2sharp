@@ -17,7 +17,7 @@ namespace LibGit2Sharp
         private static readonly LambdaEqualityHelper<Remote> equalityHelper =
             new LambdaEqualityHelper<Remote>(x => x.Name, x => x.Url, x => x.PushUrl);
 
-        internal readonly Repository repository;
+        public readonly Repository repository;
 
         private readonly RefSpecCollection refSpecs;
         private string pushUrl;
@@ -38,7 +38,7 @@ namespace LibGit2Sharp
             refSpecs = new RefSpecCollection(handle);
         }
 
-        internal static Remote BuildFromPtr(RemoteSafeHandle handle, Repository repo)
+        public static Remote BuildFromPtr(RemoteSafeHandle handle, Repository repo)
         {
             var remote = new Remote(handle, repo);
 
@@ -103,7 +103,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="reference">The reference to transform.</param>
         /// <returns>The transformed reference.</returns>
-        internal string FetchSpecTransformToSource(string reference)
+        public string FetchSpecTransformToSource(string reference)
         {
             using (RemoteSafeHandle remoteHandle = Proxy.git_remote_lookup(repository.Handle, Name, true))
             {

@@ -18,7 +18,7 @@ namespace LibGit2Sharp
         protected Blob()
         { }
 
-        internal Blob(Repository repo, ObjectId id)
+        public Blob(Repository repo, ObjectId id)
             : base(repo, id)
         {
             lazySize = GitObjectLazyGroup.Singleton(repo, id, Proxy.git_blob_rawsize);

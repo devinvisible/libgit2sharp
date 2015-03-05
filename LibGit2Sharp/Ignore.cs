@@ -19,7 +19,7 @@ namespace LibGit2Sharp
         protected Ignore()
         { }
 
-        internal Ignore(Repository repo)
+        public Ignore(Repository repo)
         {
             this.repo = repo;
         }

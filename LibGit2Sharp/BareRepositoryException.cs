@@ -47,7 +47,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal BareRepositoryException(string message, GitErrorCode code, GitErrorCategory category)
+        public BareRepositoryException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

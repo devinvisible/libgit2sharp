@@ -16,7 +16,7 @@ namespace LibGit2Sharp
         protected MergeResult()
         { }
 
-        internal MergeResult(MergeStatus status, Commit commit = null)
+        public MergeResult(MergeStatus status, Commit commit = null)
         {
             this.Status = status;
             this.Commit = commit;

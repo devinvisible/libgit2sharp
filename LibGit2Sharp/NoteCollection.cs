@@ -15,7 +15,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class NoteCollection : IEnumerable<Note>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
         private readonly Lazy<string> defaultNamespace;
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace LibGit2Sharp
         protected NoteCollection()
         { }
 
-        internal NoteCollection(Repository repo)
+        public NoteCollection(Repository repo)
         {
             this.repo = repo;
             defaultNamespace = new Lazy<string>(RetrieveDefaultNamespace);
@@ -71,7 +71,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal IEnumerable<string> NamespaceRefs
+        public IEnumerable<string> NamespaceRefs
         {
             get
             {
@@ -141,7 +141,7 @@ namespace LibGit2Sharp
             return UnCanonicalizeName(notesRef);
         }
 
-        internal static string NormalizeToCanonicalName(string name)
+        public static string NormalizeToCanonicalName(string name)
         {
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 
@@ -153,7 +153,7 @@ namespace LibGit2Sharp
             return string.Concat(Reference.NotePrefix, name);
         }
 
-        internal static string UnCanonicalizeName(string name)
+        public static string UnCanonicalizeName(string name)
         {
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 

@@ -2,7 +2,7 @@ using System;
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class NullIndexSafeHandle : IndexSafeHandle
+    public class NullIndexSafeHandle : IndexSafeHandle
     {
         public NullIndexSafeHandle()
         {

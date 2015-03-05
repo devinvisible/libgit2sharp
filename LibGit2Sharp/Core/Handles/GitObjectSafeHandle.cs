@@ -1,6 +1,6 @@
 ﻿namespace LibGit2Sharp.Core.Handles
 {
-    internal class GitObjectSafeHandle : SafeHandleBase
+    public class GitObjectSafeHandle : SafeHandleBase
     {
         protected override bool ReleaseHandleImpl()
         {

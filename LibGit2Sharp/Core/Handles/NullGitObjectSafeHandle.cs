@@ -2,7 +2,7 @@ using System;
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class NullGitObjectSafeHandle : GitObjectSafeHandle
+    public class NullGitObjectSafeHandle : GitObjectSafeHandle
     {
         public NullGitObjectSafeHandle()
         {

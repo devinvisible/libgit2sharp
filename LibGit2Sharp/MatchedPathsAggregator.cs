@@ -5,7 +5,7 @@ using LibGit2Sharp.Core;
 
 namespace LibGit2Sharp
 {
-    internal class MatchedPathsAggregator : IEnumerable<FilePath>
+    public class MatchedPathsAggregator : IEnumerable<FilePath>
     {
         private readonly List<FilePath> matchedPaths = new List<FilePath>();
 
@@ -16,7 +16,7 @@ namespace LibGit2Sharp
         /// <param name="deltaToAdd">The delta that is being diffed</param>
         /// <param name="matchedPathspec">The pathsec that matched the path of the diffed files.</param>
         /// <param name="payload">Payload object.</param>
-        internal int OnGitDiffNotify(IntPtr diffListSoFar, IntPtr deltaToAdd, IntPtr matchedPathspec, IntPtr payload)
+        public int OnGitDiffNotify(IntPtr diffListSoFar, IntPtr deltaToAdd, IntPtr matchedPathspec, IntPtr payload)
         {
             // Convert null strings into empty strings.
             var path = LaxFilePathMarshaler.FromNative(matchedPathspec) ?? FilePath.Empty;

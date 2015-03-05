@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitRepositoryInitOptions : IDisposable
+    public class GitRepositoryInitOptions : IDisposable
     {
         public uint Version = 1;
         public GitRepositoryInitFlags Flags;
@@ -47,7 +47,7 @@ namespace LibGit2Sharp.Core
     }
 
     [Flags]
-    internal enum GitRepositoryInitFlags
+    public enum GitRepositoryInitFlags
     {
         GIT_REPOSITORY_INIT_BARE = (1 << 0),
         GIT_REPOSITORY_INIT_NO_REINIT = (1 << 1),

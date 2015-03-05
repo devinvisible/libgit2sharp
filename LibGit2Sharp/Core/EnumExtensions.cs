@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LibGit2Sharp.Core
 {
-    internal static class EnumExtensions
+    public static class EnumExtensions
     {
         public static bool HasAny(this Enum enumInstance, IEnumerable<Enum> entries)
         {

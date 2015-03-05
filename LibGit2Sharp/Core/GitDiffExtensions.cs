@@ -1,6 +1,6 @@
 namespace LibGit2Sharp.Core
 {
-    internal static class GitDiffExtensions
+    public static class GitDiffExtensions
     {
         public static bool IsBinary(this GitDiffDelta delta)
         {

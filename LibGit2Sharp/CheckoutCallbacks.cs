@@ -8,7 +8,7 @@ namespace LibGit2Sharp
     /// Class to handle the mapping between libgit2 progress_cb callback on the git_checkout_opts
     /// structure to the CheckoutProgressHandler delegate.
     /// </summary>
-    internal class CheckoutCallbacks
+    public class CheckoutCallbacks
     {
         /// <summary>
         /// The managed delegate (e.g. from library consumer) to be called in response to the checkout progress callback.
@@ -69,7 +69,7 @@ namespace LibGit2Sharp
         /// <param name="onCheckoutProgress"><see cref="CheckoutProgressHandler"/> that should be wrapped in the native callback.</param>
         /// <param name="onCheckoutNotify"><see cref="CheckoutNotifyHandler"/> delegate to call in response to checkout notification callback.</param>
         /// <returns>The delegate with signature matching the expected native callback.</returns>
-        internal static CheckoutCallbacks From(CheckoutProgressHandler onCheckoutProgress, CheckoutNotifyHandler onCheckoutNotify)
+        public static CheckoutCallbacks From(CheckoutProgressHandler onCheckoutProgress, CheckoutNotifyHandler onCheckoutNotify)
         {
             return new CheckoutCallbacks(onCheckoutProgress, onCheckoutNotify);
         }

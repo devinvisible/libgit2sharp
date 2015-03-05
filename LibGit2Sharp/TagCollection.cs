@@ -13,7 +13,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class TagCollection : IEnumerable<Tag>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="TagCollection"/> class.
         /// </summary>
         /// <param name="repo">The repo.</param>
-        internal TagCollection(Repository repo)
+        public TagCollection(Repository repo)
         {
             this.repo = repo;
         }
@@ -132,7 +132,7 @@ namespace LibGit2Sharp
             return string.Concat(Reference.TagPrefix, name);
         }
 
-        internal static string UnCanonicalizeName(string name)
+        public static string UnCanonicalizeName(string name)
         {
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 

@@ -2,7 +2,7 @@
 
 namespace LibGit2Sharp.Core
 {
-    internal class LambdaEqualityHelper<T>
+    public class LambdaEqualityHelper<T>
     {
         private readonly Func<T, object>[] equalityContributorAccessors;
 

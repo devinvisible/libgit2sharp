@@ -1,8 +1,8 @@
 ﻿namespace LibGit2Sharp
 {
-    internal class VoidReference : Reference
+    public class VoidReference : Reference
     {
-        internal VoidReference(IRepository repo, string canonicalName)
+        public VoidReference(IRepository repo, string canonicalName)
             : base(repo, canonicalName, null)
         { }
 

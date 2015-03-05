@@ -279,7 +279,7 @@ namespace LibGit2Sharp
             return td;
         }
 
-        internal Tree Build(Repository repository)
+        public Tree Build(Repository repository)
         {
             WrapAllTreeDefinitions(repository);
 

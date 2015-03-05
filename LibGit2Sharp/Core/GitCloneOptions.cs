@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace LibGit2Sharp.Core
 {
-    internal enum GitCloneLocal
+    public enum GitCloneLocal
     {
         CloneLocalAuto,
         CloneLocal,
@@ -12,7 +12,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitCloneOptions
+    public struct GitCloneOptions
     {
         public uint Version;
 

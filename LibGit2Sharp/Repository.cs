@@ -183,7 +183,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal RepositorySafeHandle Handle
+        public RepositorySafeHandle Handle
         {
             get { return handle; }
         }
@@ -445,7 +445,7 @@ namespace LibGit2Sharp
             return Lookup(objectish, type.ToGitObjectType(), LookUpOptions.None);
         }
 
-        internal GitObject LookupInternal(ObjectId id, GitObjectType type, FilePath knownPath)
+        public GitObject LookupInternal(ObjectId id, GitObjectType type, FilePath knownPath)
         {
             Ensure.ArgumentNotNull(id, "id");
 
@@ -476,7 +476,7 @@ namespace LibGit2Sharp
             return (m.Groups.Count > 1) ? m.Groups[1].Value : null;
         }
 
-        internal GitObject Lookup(string objectish, GitObjectType type, LookUpOptions lookUpOptions)
+        public GitObject Lookup(string objectish, GitObjectType type, LookUpOptions lookUpOptions)
         {
             Ensure.ArgumentNotNullOrEmptyString(objectish, "objectish");
 
@@ -512,7 +512,7 @@ namespace LibGit2Sharp
             return obj;
         }
 
-        internal Commit LookupCommit(string committish)
+        public Commit LookupCommit(string committish)
         {
             return (Commit)Lookup(committish, GitObjectType.Any,
                 LookUpOptions.ThrowWhenNoGitObjectHasBeenFound |
@@ -701,7 +701,7 @@ namespace LibGit2Sharp
         }
 
         /// <summary>
-        /// Internal implementation of Checkout that expects the ID of the checkout target
+        /// public implementation of Checkout that expects the ID of the checkout target
         /// to already be in the form of a canonical branch name or a commit ID.
         /// </summary>
         /// <param name="tree">The <see cref="Tree"/> to checkout.</param>
@@ -952,7 +952,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal T RegisterForCleanup<T>(T disposable) where T : IDisposable
+        public T RegisterForCleanup<T>(T disposable) where T : IDisposable
         {
             toCleanup.Push(disposable);
             return disposable;
@@ -1231,7 +1231,7 @@ namespace LibGit2Sharp
         }
 
         /// <summary>
-        /// Internal implementation of merge.
+        /// public implementation of merge.
         /// </summary>
         /// <param name="annotatedCommits">Merge heads to operate on.</param>
         /// <param name="merger">The <see cref="Signature"/> of who is performing the merge.</param>
@@ -1394,7 +1394,7 @@ namespace LibGit2Sharp
         /// <summary>
         /// Gets the references to the tips that are currently being merged.
         /// </summary>
-        internal IEnumerable<MergeHead> MergeHeads
+        public IEnumerable<MergeHead> MergeHeads
         {
             get
             {
@@ -1404,17 +1404,17 @@ namespace LibGit2Sharp
             }
         }
 
-        internal StringComparer PathComparer
+        public StringComparer PathComparer
         {
             get { return pathCase.Value.Comparer; }
         }
 
-        internal bool PathStartsWith(string path, string value)
+        public bool PathStartsWith(string path, string value)
         {
             return pathCase.Value.StartsWith(path, value);
         }
 
-        internal FilePath[] ToFilePaths(IEnumerable<string> paths)
+        public FilePath[] ToFilePaths(IEnumerable<string> paths)
         {
             if (paths == null)
             {
@@ -1738,7 +1738,7 @@ namespace LibGit2Sharp
             return new RepositoryStatus(this, options);
         }
 
-        internal void ReloadFromDisk()
+        public void ReloadFromDisk()
         {
             Proxy.git_index_read(Index.Handle);
         }

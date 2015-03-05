@@ -21,7 +21,7 @@ namespace LibGit2Sharp
         protected ContentChangeStats()
         { }
 
-        internal ContentChangeStats(int added, int deleted)
+        public ContentChangeStats(int added, int deleted)
         {
             LinesAdded = added;
             LinesDeleted = deleted;

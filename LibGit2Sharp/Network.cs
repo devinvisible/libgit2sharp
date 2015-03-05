@@ -22,7 +22,7 @@ namespace LibGit2Sharp
         protected Network()
         { }
 
-        internal Network(Repository repository)
+        public Network(Repository repository)
         {
             this.repository = repository;
             remotes = new Lazy<RemoteCollection>(() => new RemoteCollection(repository));
@@ -293,7 +293,7 @@ namespace LibGit2Sharp
         /// <summary>
         /// The heads that have been updated during the last fetch.
         /// </summary>
-        internal virtual IEnumerable<FetchHead> FetchHeads
+        public virtual IEnumerable<FetchHead> FetchHeads
         {
             get
             {

@@ -21,7 +21,7 @@
         /// </summary>
         public virtual string Message { get; private set; }
 
-        internal PushStatusError(string reference, string message)
+        public PushStatusError(string reference, string message)
         {
             Reference = reference;
             Message = message;

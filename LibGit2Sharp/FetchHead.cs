@@ -7,7 +7,7 @@ namespace LibGit2Sharp
     /// Represents a local reference data from a remote repository which
     /// has been retreived through a Fetch process.
     /// </summary>
-    internal class FetchHead : ReferenceWrapper<GitObject>
+    public class FetchHead : ReferenceWrapper<GitObject>
     {
         /// <summary>
         /// Needed for mocking purposes.
@@ -15,7 +15,7 @@ namespace LibGit2Sharp
         protected FetchHead()
         { }
 
-        internal FetchHead(Repository repo, string remoteCanonicalName,
+        public FetchHead(Repository repo, string remoteCanonicalName,
             string url, ObjectId targetId, bool forMerge, int index)
             : base(repo, new DirectReference(
                 string.Format(CultureInfo.InvariantCulture, "FETCH_HEAD[{0}]", index),

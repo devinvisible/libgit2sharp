@@ -21,7 +21,7 @@ namespace LibGit2Sharp
         /// The commits will be enumerated according in reverse chronological order.
         /// </summary>
         /// <param name="repo">The repository.</param>
-        internal CommitLog(Repository repo)
+        public CommitLog(Repository repo)
             : this(repo, new CommitFilter())
         {
         }
@@ -31,7 +31,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repo">The repository.</param>
         /// <param name="queryFilter">The filter to use in querying commits</param>
-        internal CommitLog(Repository repo, CommitFilter queryFilter)
+        public CommitLog(Repository repo, CommitFilter queryFilter)
         {
             this.repo = repo;
             this.queryFilter = queryFilter;

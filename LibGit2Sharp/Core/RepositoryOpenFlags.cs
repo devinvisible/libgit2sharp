@@ -6,7 +6,7 @@ namespace LibGit2Sharp.Core
     /// Option flags for `git_repository_open_ext`
     /// </summary>
     [Flags]
-    internal enum RepositoryOpenFlags
+    public enum RepositoryOpenFlags
     {
         /// <summary>
         /// Only open the repository if it can be

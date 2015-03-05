@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace LibGit2Sharp.Core
 {
-    internal class HistoryRewriter
+    public class HistoryRewriter
     {
         private readonly IRepository repo;
 

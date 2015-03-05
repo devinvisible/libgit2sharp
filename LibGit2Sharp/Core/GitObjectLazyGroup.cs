@@ -3,7 +3,7 @@ using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp.Core
 {
-    internal class GitObjectLazyGroup : LazyGroup<GitObjectSafeHandle>
+    public class GitObjectLazyGroup : LazyGroup<GitObjectSafeHandle>
     {
         private readonly ObjectId id;
 

@@ -52,7 +52,7 @@ namespace LibGit2Sharp
         protected RepositoryStatus()
         { }
 
-        internal RepositoryStatus(Repository repo, StatusOptions options)
+        public RepositoryStatus(Repository repo, StatusOptions options)
         {
             statusEntries = new List<StatusEntry>();
 

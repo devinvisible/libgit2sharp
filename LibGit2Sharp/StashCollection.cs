@@ -14,7 +14,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class StashCollection : IEnumerable<Stash>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -26,7 +26,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="StashCollection"/> class.
         /// </summary>
         /// <param name="repo">The repo.</param>
-        internal StashCollection(Repository repo)
+        public StashCollection(Repository repo)
         {
             this.repo = repo;
         }

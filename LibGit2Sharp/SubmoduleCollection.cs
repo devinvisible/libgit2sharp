@@ -15,7 +15,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class SubmoduleCollection : IEnumerable<Submodule>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -27,7 +27,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="LibGit2Sharp.SubmoduleCollection"/> class.
         /// </summary>
         /// <param name="repo">The repo.</param>
-        internal SubmoduleCollection(Repository repo)
+        public SubmoduleCollection(Repository repo)
         {
             this.repo = repo;
         }
@@ -136,7 +136,7 @@ namespace LibGit2Sharp
             return GetEnumerator();
         }
 
-        internal bool TryStage(string relativePath, bool writeIndex)
+        public bool TryStage(string relativePath, bool writeIndex)
         {
             return Lookup(relativePath, handle =>
                                             {
@@ -148,7 +148,7 @@ namespace LibGit2Sharp
                                             });
         }
 
-        internal T Lookup<T>(string name, Func<SubmoduleSafeHandle, T> selector, bool throwIfNotFound = false)
+        public T Lookup<T>(string name, Func<SubmoduleSafeHandle, T> selector, bool throwIfNotFound = false)
         {
             using (var handle = Proxy.git_submodule_lookup(repo.Handle, name))
             {

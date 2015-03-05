@@ -10,14 +10,14 @@ namespace LibGit2Sharp
     /// of LibGit2Sharp delegates and handles propagating libgit2 callbacks into
     /// corresponding LibGit2Sharp exposed delegates.
     /// </summary>
-    internal class RemoteCallbacks
+    public class RemoteCallbacks
     {
-        internal RemoteCallbacks(CredentialsHandler credentialsProvider)
+        public RemoteCallbacks(CredentialsHandler credentialsProvider)
         {
             CredentialsProvider = credentialsProvider;
         }
 
-        internal RemoteCallbacks(PushOptions pushOptions)
+        public RemoteCallbacks(PushOptions pushOptions)
         {
             if (pushOptions == null)
             {
@@ -29,7 +29,7 @@ namespace LibGit2Sharp
             CredentialsProvider = pushOptions.CredentialsProvider;
         }
 
-        internal RemoteCallbacks(FetchOptionsBase fetchOptions)
+        public RemoteCallbacks(FetchOptionsBase fetchOptions)
         {
             if (fetchOptions == null)
             {
@@ -77,7 +77,7 @@ namespace LibGit2Sharp
         /// </summary>
         private readonly CredentialsHandler CredentialsProvider;
 
-        internal GitRemoteCallbacks GenerateCallbacks()
+        public GitRemoteCallbacks GenerateCallbacks()
         {
             var callbacks = new GitRemoteCallbacks {version = 1};
 

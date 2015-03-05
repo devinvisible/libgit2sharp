@@ -8,7 +8,7 @@ namespace LibGit2Sharp.Core
     /// with LibGit2Sharp's allocator (Marshal.AllocHGlobal).
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitStrArrayManaged : IDisposable
+    public struct GitStrArrayManaged : IDisposable
     {
         public GitStrArray Array;
 

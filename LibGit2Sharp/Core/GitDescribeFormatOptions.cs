@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitDescribeFormatOptions
+    public struct GitDescribeFormatOptions
     {
         public uint Version;
         public uint MinAbbreviatedSize;
@@ -13,7 +13,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitDescribeOptions
+    public struct GitDescribeOptions
     {
         public uint Version;
         public uint MaxCandidatesTags;

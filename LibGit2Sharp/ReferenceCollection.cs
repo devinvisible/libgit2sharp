@@ -15,7 +15,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class ReferenceCollection : IEnumerable<Reference>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -27,7 +27,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="ReferenceCollection"/> class.
         /// </summary>
         /// <param name="repo">The repo.</param>
-        internal ReferenceCollection(Repository repo)
+        public ReferenceCollection(Repository repo)
         {
             this.repo = repo;
         }
@@ -178,7 +178,7 @@ namespace LibGit2Sharp
             return Rename(reference, newName, null, allowOverwrite);
         }
 
-        internal T Resolve<T>(string name) where T : Reference
+        public T Resolve<T>(string name) where T : Reference
         {
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
 
@@ -258,7 +258,7 @@ namespace LibGit2Sharp
             return UpdateTarget(symbolicRef, targetRef, null);
         }
 
-        internal Reference UpdateHeadTarget<T>(T target)
+        public Reference UpdateHeadTarget<T>(T target)
         {
             if (target is ObjectId)
             {
@@ -296,7 +296,7 @@ namespace LibGit2Sharp
             return repo.Refs.Head;
         }
 
-        internal ReferenceSafeHandle RetrieveReferencePtr(string referenceName, bool shouldThrowIfNotFound = true)
+        public ReferenceSafeHandle RetrieveReferencePtr(string referenceName, bool shouldThrowIfNotFound = true)
         {
             ReferenceSafeHandle reference = Proxy.git_reference_lookup(repo.Handle, referenceName, shouldThrowIfNotFound);
 
@@ -400,7 +400,7 @@ namespace LibGit2Sharp
         /// Ensure that a reflog exists for the given canonical name
         /// </summary>
         /// <param name="canonicalName">Canonical name of the reference</param>
-        internal void EnsureHasLog(string canonicalName)
+        public void EnsureHasLog(string canonicalName)
         {
             Proxy.git_reference_ensure_log(repo.Handle, canonicalName);
         }

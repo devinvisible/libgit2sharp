@@ -15,7 +15,7 @@ namespace LibGit2Sharp.Core
     ///                    MarshalCookie = UniqueId.UniqueIdentifier,
     ///                    MarshalTypeRef = typeof(LaxFilePathNoCleanupMarshaler))]
     /// </summary>
-    internal class LaxFilePathNoCleanupMarshaler : LaxFilePathMarshaler
+    public class LaxFilePathNoCleanupMarshaler : LaxFilePathMarshaler
     {
         private static readonly LaxFilePathNoCleanupMarshaler staticInstance = new LaxFilePathNoCleanupMarshaler();
 
@@ -42,12 +42,12 @@ namespace LibGit2Sharp.Core
     ///
     /// Use this marshaler for function parameters, for example:
     /// [DllImport(libgit2)]
-    /// internal static extern int git_index_open(out IndexSafeHandle index,
+    /// public static extern int git_index_open(out IndexSafeHandle index,
     ///     [MarshalAs(UnmanagedType.CustomMarshaler,
     ///                MarshalCookie = UniqueId.UniqueIdentifier,
     ///                MarshalTypeRef = typeof(StrictFilePathMarshaler))] FilePath indexpath);
     /// </summary>
-    internal class StrictFilePathMarshaler : StrictUtf8Marshaler
+    public class StrictFilePathMarshaler : StrictUtf8Marshaler
     {
         private static readonly StrictFilePathMarshaler staticInstance = new StrictFilePathMarshaler();
 
@@ -94,7 +94,7 @@ namespace LibGit2Sharp.Core
     /// converting it to a managed FilePath instance. The marshaler will free the native pointer
     /// after conversion.
     /// </summary>
-    internal class LaxFilePathMarshaler : LaxUtf8Marshaler
+    public class LaxFilePathMarshaler : LaxUtf8Marshaler
     {
         private static readonly LaxFilePathMarshaler staticInstance = new LaxFilePathMarshaler();
 

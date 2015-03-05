@@ -29,14 +29,14 @@ namespace LibGit2Sharp
         /// This would be protected+internal, were that supported by C#.
         /// Do not use except in subclasses.
         /// </remarks>
-        internal Reference(IRepository repo, string canonicalName, string targetIdentifier)
+        public Reference(IRepository repo, string canonicalName, string targetIdentifier)
         {
             this.repo = repo;
             this.canonicalName = canonicalName;
             this.targetIdentifier = targetIdentifier;
         }
 
-        internal static T BuildFromPtr<T>(ReferenceSafeHandle handle, Repository repo) where T : Reference
+        public static T BuildFromPtr<T>(ReferenceSafeHandle handle, Repository repo) where T : Reference
         {
             GitReferenceType type = Proxy.git_reference_type(handle);
             string name = Proxy.git_reference_name(handle);
@@ -170,22 +170,22 @@ namespace LibGit2Sharp
             return CanonicalName;
         }
 
-        internal static string LocalBranchPrefix
+        public static string LocalBranchPrefix
         {
             get { return "refs/heads/"; }
         }
 
-        internal static string RemoteTrackingBranchPrefix
+        public static string RemoteTrackingBranchPrefix
         {
             get { return "refs/remotes/"; }
         }
 
-        internal static string TagPrefix
+        public static string TagPrefix
         {
             get { return "refs/tags/"; }
         }
 
-        internal static string NotePrefix
+        public static string NotePrefix
         {
             get { return "refs/notes/"; }
         }

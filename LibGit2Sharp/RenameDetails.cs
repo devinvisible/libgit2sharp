@@ -24,7 +24,7 @@ namespace LibGit2Sharp
         protected RenameDetails()
         { }
 
-        internal RenameDetails(string oldFilePath, string newFilePath, int similarity)
+        public RenameDetails(string oldFilePath, string newFilePath, int similarity)
         {
             this.oldFilePath = oldFilePath;
             this.newFilePath = newFilePath;

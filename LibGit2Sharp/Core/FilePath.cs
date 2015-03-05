@@ -3,9 +3,9 @@ using System.IO;
 
 namespace LibGit2Sharp.Core
 {
-    internal class FilePath : IEquatable<FilePath>
+    public class FilePath : IEquatable<FilePath>
     {
-        internal static FilePath Empty = new FilePath(string.Empty);
+        public static FilePath Empty = new FilePath(string.Empty);
 
         private const char posixDirectorySeparatorChar = '/';
 

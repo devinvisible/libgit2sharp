@@ -30,7 +30,7 @@ namespace LibGit2Sharp
         Tag = 4,
     }
 
-    internal static class ObjectTypeExtensions
+    public static class ObjectTypeExtensions
     {
         public static GitObjectType ToGitObjectType(this ObjectType type)
         {

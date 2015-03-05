@@ -17,7 +17,7 @@ namespace LibGit2Sharp
         protected HistoryDivergence()
         { }
 
-        internal HistoryDivergence(Repository repo, Commit one, Commit another)
+        public HistoryDivergence(Repository repo, Commit one, Commit another)
         {
             commonAncestor = new Lazy<Commit>(() => repo.ObjectDatabase.FindMergeBase(one, another));
             Tuple<int?, int?> div = Proxy.git_graph_ahead_behind(repo.Handle, one, another);
@@ -71,7 +71,7 @@ namespace LibGit2Sharp
         }
     }
 
-    internal class NullHistoryDivergence : HistoryDivergence
+    public class NullHistoryDivergence : HistoryDivergence
     {
         public override Commit CommonAncestor
         {

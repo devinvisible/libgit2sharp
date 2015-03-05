@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LibGit2Sharp.Core
 {
-    internal abstract class EncodingMarshaler : ICustomMarshaler
+    public abstract class EncodingMarshaler : ICustomMarshaler
     {
         private readonly Encoding encoding;
 

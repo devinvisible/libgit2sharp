@@ -14,7 +14,7 @@ namespace LibGit2Sharp
         protected CherryPickResult()
         { }
 
-        internal CherryPickResult(CherryPickStatus status, Commit commit = null)
+        public CherryPickResult(CherryPickStatus status, Commit commit = null)
         {
             Commit = commit;
             Status = status;

@@ -13,7 +13,7 @@ namespace LibGit2Sharp
         private static readonly LambdaEqualityHelper<TreeEntryDefinition> equalityHelper =
             new LambdaEqualityHelper<TreeEntryDefinition>(x => x.Mode, x => x.TargetType, x => x.TargetId);
 
-        internal static readonly Enum[] BlobModes = new Enum[] { Mode.NonExecutableFile, Mode.ExecutableFile, Mode.NonExecutableGroupWritableFile, Mode.SymbolicLink };
+        public static readonly Enum[] BlobModes = new Enum[] { Mode.NonExecutableFile, Mode.ExecutableFile, Mode.NonExecutableGroupWritableFile, Mode.SymbolicLink };
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -37,12 +37,12 @@ namespace LibGit2Sharp
         /// </summary>
         public virtual ObjectId TargetId { get; private set; }
 
-        internal virtual GitObject Target
+        public virtual GitObject Target
         {
             get { return target.Value; }
         }
 
-        internal static TreeEntryDefinition From(TreeEntry treeEntry)
+        public static TreeEntryDefinition From(TreeEntry treeEntry)
         {
             return new TreeEntryDefinition
                        {
@@ -53,7 +53,7 @@ namespace LibGit2Sharp
                        };
         }
 
-        internal static TreeEntryDefinition From(Blob blob, Mode mode)
+        public static TreeEntryDefinition From(Blob blob, Mode mode)
         {
             return new TreeEntryDefinition
                        {
@@ -64,7 +64,7 @@ namespace LibGit2Sharp
                        };
         }
 
-        internal static TreeEntryDefinition TransientBlobFrom(string filePath, Mode mode)
+        public static TreeEntryDefinition TransientBlobFrom(string filePath, Mode mode)
         {
             Ensure.ArgumentConformsTo(mode, m => m.HasAny(BlobModes), "mode");
 
@@ -75,7 +75,7 @@ namespace LibGit2Sharp
                        };
         }
 
-        internal static TreeEntryDefinition From(ObjectId objectId)
+        public static TreeEntryDefinition From(ObjectId objectId)
         {
             return new TreeEntryDefinition
                        {
@@ -86,7 +86,7 @@ namespace LibGit2Sharp
                        };
         }
 
-        internal static TreeEntryDefinition From(Tree tree)
+        public static TreeEntryDefinition From(Tree tree)
         {
             return new TreeEntryDefinition
                        {
@@ -149,20 +149,20 @@ namespace LibGit2Sharp
         }
     }
 
-    internal abstract class TransientTreeEntryDefinition : TreeEntryDefinition
+    public abstract class TransientTreeEntryDefinition : TreeEntryDefinition
     {
         public override ObjectId TargetId
         {
             get { return ObjectId.Zero; }
         }
 
-        internal override GitObject Target
+        public override GitObject Target
         {
             get { return null; }
         }
     }
 
-    internal class TransientTreeTreeEntryDefinition : TransientTreeEntryDefinition
+    public class TransientTreeTreeEntryDefinition : TransientTreeEntryDefinition
     {
         public override Mode Mode
         {
@@ -175,7 +175,7 @@ namespace LibGit2Sharp
         }
     }
 
-    internal class TransientBlobTreeEntryDefinition : TransientTreeEntryDefinition
+    public class TransientBlobTreeEntryDefinition : TransientTreeEntryDefinition
     {
         public override TreeEntryTargetType TargetType
         {

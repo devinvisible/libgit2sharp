@@ -46,7 +46,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal UserCancelledException(string message, GitErrorCode code, GitErrorCategory category)
+        public UserCancelledException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

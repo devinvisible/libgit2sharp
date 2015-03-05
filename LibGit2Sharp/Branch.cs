@@ -24,7 +24,7 @@ namespace LibGit2Sharp
         /// <param name="repo">The repo.</param>
         /// <param name="reference">The reference.</param>
         /// <param name="canonicalName">The full name of the reference</param>
-        internal Branch(Repository repo, Reference reference, string canonicalName)
+        public Branch(Repository repo, Reference reference, string canonicalName)
             : this(repo, reference, _ => canonicalName)
         {
         }
@@ -37,7 +37,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repo">The repo.</param>
         /// <param name="reference">The reference.</param>
-        internal Branch(Repository repo, Reference reference)
+        public Branch(Repository repo, Reference reference)
             : this(repo, reference, r => r.TargetIdentifier)
         {
         }

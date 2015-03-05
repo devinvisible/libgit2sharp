@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitSmartSubtransportStream
+    public class GitSmartSubtransportStream
     {
         static GitSmartSubtransportStream()
         {

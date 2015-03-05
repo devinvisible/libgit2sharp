@@ -6,7 +6,7 @@ namespace LibGit2Sharp.Core
     /// <summary>
     /// Underlying type of a <see cref="GitObject"/>
     /// </summary>
-    internal enum GitObjectType
+    public enum GitObjectType
     {
         /// <summary>
         /// Object can be of any type.
@@ -59,7 +59,7 @@ namespace LibGit2Sharp.Core
         RefDelta = 7
     }
 
-    internal static class GitObjectTypeExtensions
+    public static class GitObjectTypeExtensions
     {
         public static TreeEntryTargetType ToTreeEntryTargetType(this GitObjectType type)
         {

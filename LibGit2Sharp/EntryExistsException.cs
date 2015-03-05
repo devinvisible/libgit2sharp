@@ -46,7 +46,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal EntryExistsException(string message, GitErrorCode code, GitErrorCategory category)
+        public EntryExistsException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

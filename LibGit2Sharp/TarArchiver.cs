@@ -10,7 +10,7 @@ namespace LibGit2Sharp
     /// Logic for tar archiving (not the actual tar format, but the overal logic related to tar+git) is taken
     /// from https://github.com/git/git/blob/master/archive-tar.c.
     /// </summary>
-    internal class TarArchiver : ArchiverBase, IDisposable
+    public class TarArchiver : ArchiverBase, IDisposable
     {
         private readonly TarWriter writer;
 

@@ -24,7 +24,7 @@ using System.Text;
 
 namespace LibGit2Sharp.Core
 {
-    internal class TarWriter : IDisposable
+    public class TarWriter : IDisposable
     {
         private readonly Stream outStream;
 

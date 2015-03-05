@@ -2,7 +2,7 @@
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class IndexNameEntrySafeHandle : NotOwnedSafeHandleBase
+    public class IndexNameEntrySafeHandle : NotOwnedSafeHandleBase
     {
         public GitIndexNameEntry MarshalAsGitIndexNameEntry()
         {

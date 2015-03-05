@@ -2,7 +2,7 @@
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class OidSafeHandle : NotOwnedSafeHandleBase
+    public class OidSafeHandle : NotOwnedSafeHandleBase
     {
         private GitOid? MarshalAsGitOid()
         {

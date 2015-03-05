@@ -17,7 +17,7 @@ namespace LibGit2Sharp
         /// <summary>
         /// Size of the string-based representation of a SHA-1.
         /// </summary>
-        internal const int HexSize = rawSize * 2;
+        public const int HexSize = rawSize * 2;
 
         private const string hexDigits = "0123456789abcdef";
         private static readonly byte[] reverseHexDigits = BuildReverseHexDigits();
@@ -35,7 +35,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="ObjectId"/> class.
         /// </summary>
         /// <param name="oid">The oid.</param>
-        internal ObjectId(GitOid oid)
+        public ObjectId(GitOid oid)
         {
             if (oid.Id == null || oid.Id.Length != rawSize)
             {
@@ -74,7 +74,7 @@ namespace LibGit2Sharp
             this.sha = sha;
         }
 
-        internal GitOid Oid
+        public GitOid Oid
         {
             get { return oid; }
         }
@@ -231,7 +231,7 @@ namespace LibGit2Sharp
             return bytes;
         }
 
-        internal static string ToString(byte[] id, int lengthInNibbles)
+        public static string ToString(byte[] id, int lengthInNibbles)
         {
             // Inspired from http://stackoverflow.com/questions/623104/c-byte-to-hex-string/3974535#3974535
 

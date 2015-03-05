@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [Flags]
-    internal enum CheckoutStrategy
+    public enum CheckoutStrategy
     {
         /// <summary>
         /// Default is a dry run, no actual updates.
@@ -118,7 +118,7 @@ namespace LibGit2Sharp.Core
         GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED = (1 << 17),
     }
 
-    internal delegate int checkout_notify_cb(
+    public delegate int checkout_notify_cb(
         CheckoutNotifyFlags why,
         IntPtr path,
         IntPtr baseline,
@@ -126,18 +126,18 @@ namespace LibGit2Sharp.Core
         IntPtr workdir,
         IntPtr payload);
 
-    internal delegate void progress_cb(
+    public delegate void progress_cb(
             IntPtr strPtr,
             UIntPtr completed_steps,
             UIntPtr total_steps,
             IntPtr payload);
 
-    internal delegate int perfdata_cb(
+    public delegate int perfdata_cb(
             IntPtr perfdata,
             IntPtr payload);
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitCheckoutOpts
+    public struct GitCheckoutOpts
     {
         public uint version;
 
@@ -172,7 +172,7 @@ namespace LibGit2Sharp.Core
     /// An inteface for objects that specify parameters from which a
     /// GitCheckoutOpts struct can be populated.
     /// </summary>
-    internal interface IConvertableToGitCheckoutOpts
+    public interface IConvertableToGitCheckoutOpts
     {
         CheckoutCallbacks GenerateCallbacks();
 
@@ -187,11 +187,11 @@ namespace LibGit2Sharp.Core
     /// part of a FastForward merge. Most properties are passthrough to the
     /// wrapped object.
     /// </summary>
-    internal class FastForwardCheckoutOptionsAdapter : IConvertableToGitCheckoutOpts
+    public class FastForwardCheckoutOptionsAdapter : IConvertableToGitCheckoutOpts
     {
         private IConvertableToGitCheckoutOpts internalOptions;
 
-        internal FastForwardCheckoutOptionsAdapter(IConvertableToGitCheckoutOpts internalOptions)
+        public FastForwardCheckoutOptionsAdapter(IConvertableToGitCheckoutOpts internalOptions)
         {
             this.internalOptions = internalOptions;
         }

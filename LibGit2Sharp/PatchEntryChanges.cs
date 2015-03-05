@@ -13,7 +13,7 @@
         protected PatchEntryChanges()
         { }
 
-        internal PatchEntryChanges(bool isBinaryComparison, TreeEntryChanges treeEntryChanges)
+        public PatchEntryChanges(bool isBinaryComparison, TreeEntryChanges treeEntryChanges)
             : base(isBinaryComparison)
         {
             this.treeEntryChanges = treeEntryChanges;

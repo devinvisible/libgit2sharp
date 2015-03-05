@@ -10,7 +10,7 @@ namespace LibGit2Sharp.Core
     /// A status entry from libgit2.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitStatusEntry
+    public class GitStatusEntry
     {
         /// <summary>
         /// Calculated status of a filepath in the working directory considering the current <see cref = "Repository.Index" /> and the <see cref="Repository.Head" />.

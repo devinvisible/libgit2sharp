@@ -9,7 +9,7 @@ namespace LibGit2Sharp.Core
     /// with libgit2's allocator. Only libgit2 can free this git_strarray.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitStrArrayNative : IDisposable
+    public struct GitStrArrayNative : IDisposable
     {
         public GitStrArray Array;
 

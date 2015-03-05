@@ -7,22 +7,22 @@ namespace LibGit2Sharp
     /// </summary>
     public static class ReferenceExtensions
     {
-        internal static bool LooksLikeLocalBranch(this string canonicalName)
+        public static bool LooksLikeLocalBranch(this string canonicalName)
         {
             return canonicalName.IsPrefixedBy(Reference.LocalBranchPrefix);
         }
 
-        internal static bool LooksLikeRemoteTrackingBranch(this string canonicalName)
+        public static bool LooksLikeRemoteTrackingBranch(this string canonicalName)
         {
             return canonicalName.IsPrefixedBy(Reference.RemoteTrackingBranchPrefix);
         }
 
-        internal static bool LooksLikeTag(this string canonicalName)
+        public static bool LooksLikeTag(this string canonicalName)
         {
             return canonicalName.IsPrefixedBy(Reference.TagPrefix);
         }
 
-        internal static bool LooksLikeNote(this string canonicalName)
+        public static bool LooksLikeNote(this string canonicalName)
         {
             return canonicalName.IsPrefixedBy(Reference.NotePrefix);
         }

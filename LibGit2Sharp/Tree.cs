@@ -24,7 +24,7 @@ namespace LibGit2Sharp
         protected Tree()
         { }
 
-        internal Tree(Repository repo, ObjectId id, FilePath path)
+        public Tree(Repository repo, ObjectId id, FilePath path)
             : base(repo, id)
         {
             this.path = path ?? "";
@@ -68,7 +68,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal string Path
+        public string Path
         {
             get { return path.Native; }
         }

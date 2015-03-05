@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         GitLink,
     }
 
-    internal static class TreeEntryTargetTypeExtensions
+    public static class TreeEntryTargetTypeExtensions
     {
         public static GitObjectType ToGitObjectType(this TreeEntryTargetType type)
         {

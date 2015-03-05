@@ -15,7 +15,7 @@ namespace LibGit2Sharp
         protected BranchTrackingDetails()
         { }
 
-        internal BranchTrackingDetails(Repository repo, Branch branch)
+        public BranchTrackingDetails(Repository repo, Branch branch)
         {
             if (!branch.IsTracking || branch.Tip == null || branch.TrackedBranch.Tip == null)
             {

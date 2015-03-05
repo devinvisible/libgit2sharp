@@ -8,12 +8,12 @@ namespace LibGit2Sharp.Tests.TestHelpers
     /// Class to verify the expected state after fetching github.com/nulltoken/TestGitRepository into an empty repository.
     /// Includes the expected reference callbacks and the expected branches / tags after fetch is completed.
     /// </summary>
-    internal class ExpectedFetchState
+    public class ExpectedFetchState
     {
         /// <summary>
         /// Name of the Remote being fetched from.
         /// </summary>
-        internal string RemoteName { get; private set; }
+        public string RemoteName { get; private set; }
 
         /// <summary>
         /// Expected branch tips after fetching into an empty repository.

@@ -289,7 +289,7 @@ namespace LibGit2Sharp
             return repository.Checkout(commit, options);
         }
 
-        internal static string BuildRelativePathFrom(this Repository repo, string path)
+        public static string BuildRelativePathFrom(this Repository repo, string path)
         {
             //TODO: To be removed when libgit2 natively implements this
             if (!Path.IsPathRooted(path))
@@ -387,7 +387,7 @@ namespace LibGit2Sharp
         /// <param name="identifier">Committish to dereference</param>
         /// <param name="throwIfNotFound">If true, allow thrown exceptions to propagate. If false, exceptions will be swallowed and null returned.</param>
         /// <returns>A series of commit <see cref="ObjectId"/>s which identify commit objects.</returns>
-        internal static IEnumerable<ObjectId> Committishes(this Repository repo, object identifier, bool throwIfNotFound = false)
+        public static IEnumerable<ObjectId> Committishes(this Repository repo, object identifier, bool throwIfNotFound = false)
         {
             var singleReturnValue = repo.SingleCommittish(identifier);
 
@@ -424,7 +424,7 @@ namespace LibGit2Sharp
         /// <param name="repo">The <see cref="Repository"/> to search</param>
         /// <param name="identifier">Committish to dereference</param>
         /// <returns>An <see cref="ObjectId"/> for a commit object.</returns>
-        internal static ObjectId Committish(this Repository repo, object identifier)
+        public static ObjectId Committish(this Repository repo, object identifier)
         {
             return repo.Committishes(identifier, true).First();
         }

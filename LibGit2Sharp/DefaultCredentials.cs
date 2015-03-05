@@ -14,7 +14,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="cred">The newly created credential object.</param>
         /// <returns>0 for success, &lt; 0 to indicate an error, &gt; 0 to indicate no credential was acquired.</returns>
-        protected internal override int GitCredentialHandler(out IntPtr cred)
+         public override int GitCredentialHandler(out IntPtr cred)
         {
             return NativeMethods.git_cred_default_new(out cred);
         }

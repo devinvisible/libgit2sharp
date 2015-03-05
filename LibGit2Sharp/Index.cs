@@ -27,7 +27,7 @@ namespace LibGit2Sharp
         protected Index()
         { }
 
-        internal Index(Repository repo)
+        public Index(Repository repo)
         {
             this.repo = repo;
 
@@ -37,7 +37,7 @@ namespace LibGit2Sharp
             repo.RegisterForCleanup(handle);
         }
 
-        internal Index(Repository repo, string indexPath)
+        public Index(Repository repo, string indexPath)
         {
             this.repo = repo;
 
@@ -48,7 +48,7 @@ namespace LibGit2Sharp
             repo.RegisterForCleanup(handle);
         }
 
-        internal IndexSafeHandle Handle
+        public IndexSafeHandle Handle
         {
             get { return handle; }
         }
@@ -233,7 +233,7 @@ namespace LibGit2Sharp
             Proxy.git_index_write(handle);
         }
 
-        internal void Replace(TreeChanges changes)
+        public void Replace(TreeChanges changes)
         {
             foreach (TreeEntryChanges treeEntryChanges in changes)
             {

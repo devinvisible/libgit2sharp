@@ -15,7 +15,7 @@ namespace LibGit2Sharp
         protected DirectReference()
         { }
 
-        internal DirectReference(string canonicalName, IRepository repo, ObjectId targetId)
+        public DirectReference(string canonicalName, IRepository repo, ObjectId targetId)
             : base(repo, canonicalName, targetId.Sha)
         {
             targetBuilder = new Lazy<GitObject>(() => repo.Lookup(targetId));

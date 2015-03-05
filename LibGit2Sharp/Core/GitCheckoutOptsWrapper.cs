@@ -9,7 +9,7 @@ namespace LibGit2Sharp.Core
     /// A wrapper around the native GitCheckoutOpts structure. This class is responsible
     /// for the managed objects that the native code points to.
     /// </summary>
-    internal class GitCheckoutOptsWrapper : IDisposable
+    public class GitCheckoutOptsWrapper : IDisposable
     {
         /// <summary>
         /// Create wrapper around <see cref="GitCheckoutOpts"/> from <see cref="CheckoutOptions"/>.
@@ -60,7 +60,7 @@ namespace LibGit2Sharp.Core
         /// <summary>
         /// Method to translate from <see cref="CheckoutFileConflictStrategy"/> to <see cref="CheckoutStrategy"/> flags.
         /// </summary>
-        internal static CheckoutStrategy CheckoutStrategyFromFileConflictStrategy(CheckoutFileConflictStrategy fileConflictStrategy)
+        public static CheckoutStrategy CheckoutStrategyFromFileConflictStrategy(CheckoutFileConflictStrategy fileConflictStrategy)
         {
             CheckoutStrategy flags = default(CheckoutStrategy);
 

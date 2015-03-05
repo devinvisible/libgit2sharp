@@ -3,7 +3,7 @@ using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp.Core
 {
-    internal class SubmoduleLazyGroup : LazyGroup<SubmoduleSafeHandle>
+    public class SubmoduleLazyGroup : LazyGroup<SubmoduleSafeHandle>
     {
         private readonly string name;
 

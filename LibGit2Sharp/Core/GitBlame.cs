@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [Flags]
-    internal enum GitBlameOptionFlags
+    public enum GitBlameOptionFlags
     {
         /// <summary>
         /// Normal blame, the default
@@ -41,7 +41,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitBlameOptions
+    public class GitBlameOptions
     {
         public uint version = 1;
         public GitBlameOptionFlags flags;
@@ -53,7 +53,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitBlameHunk
+    public class GitBlameHunk
     {
         public ushort LinesInHunk;
 
@@ -69,7 +69,7 @@ namespace LibGit2Sharp.Core
         public byte Boundary;
     }
 
-    internal static class BlameStrategyExtensions
+    public static class BlameStrategyExtensions
     {
         public static GitBlameOptionFlags ToGitBlameOptionFlags(this BlameStrategy strategy)
         {

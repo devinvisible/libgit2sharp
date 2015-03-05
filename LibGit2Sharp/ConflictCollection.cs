@@ -21,7 +21,7 @@ namespace LibGit2Sharp
         protected ConflictCollection()
         { }
 
-        internal ConflictCollection(Repository repo)
+        public ConflictCollection(Repository repo)
         {
             this.repo = repo;
         }

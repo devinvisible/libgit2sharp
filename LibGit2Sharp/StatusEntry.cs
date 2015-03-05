@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         protected StatusEntry()
         { }
 
-        internal StatusEntry(string filePath, FileStatus state, RenameDetails headToIndexRenameDetails = null, RenameDetails indexToWorkDirRenameDetails = null)
+        public StatusEntry(string filePath, FileStatus state, RenameDetails headToIndexRenameDetails = null, RenameDetails indexToWorkDirRenameDetails = null)
         {
             this.filePath = filePath;
             this.state = state;

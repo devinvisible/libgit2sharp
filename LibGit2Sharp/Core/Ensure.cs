@@ -11,7 +11,7 @@ namespace LibGit2Sharp.Core
     /// Ensure input parameters
     /// </summary>
     [DebuggerStepThrough]
-    internal static class Ensure
+    public static class Ensure
     {
         /// <summary>
         /// Checks an argument to ensure it isn't null.

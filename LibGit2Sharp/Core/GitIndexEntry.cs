@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitIndexEntry
+    public class GitIndexEntry
     {
-        internal const ushort GIT_IDXENTRY_VALID = 0x8000;
+        public const ushort GIT_IDXENTRY_VALID = 0x8000;
 
         public GitIndexTime CTime;
         public GitIndexTime MTime;

@@ -20,7 +20,7 @@ namespace LibGit2Sharp
                                                 x => x.InitialCommit);
 
 
-        internal BlameHunk(IRepository repository, GitBlameHunk rawHunk)
+        public BlameHunk(IRepository repository, GitBlameHunk rawHunk)
         {
             finalCommit = new Lazy<Commit>(() => repository.Lookup<Commit>(rawHunk.FinalCommitId));
             origCommit = new Lazy<Commit>(() => repository.Lookup<Commit>(rawHunk.OrigCommitId));

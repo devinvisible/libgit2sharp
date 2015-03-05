@@ -4,14 +4,14 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [Flags]
-    internal enum GitOdbBackendStreamMode
+    public enum GitOdbBackendStreamMode
     {
         Read = 2,
         Write = 4
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitOdbBackendStream
+    public class GitOdbBackendStream
     {
         static GitOdbBackendStream()
         {

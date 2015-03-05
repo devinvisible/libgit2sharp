@@ -47,7 +47,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal NonFastForwardException(string message, GitErrorCode code, GitErrorCategory category)
+        public NonFastForwardException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

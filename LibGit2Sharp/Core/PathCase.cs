@@ -2,7 +2,7 @@ using System;
 
 namespace LibGit2Sharp.Core
 {
-    internal class PathCase
+    public class PathCase
     {
         private readonly StringComparer comparer;
         private readonly StringComparison comparison;

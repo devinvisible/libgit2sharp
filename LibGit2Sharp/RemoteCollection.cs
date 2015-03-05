@@ -24,7 +24,7 @@ namespace LibGit2Sharp
         protected RemoteCollection()
         { }
 
-        internal RemoteCollection(Repository repository)
+        public RemoteCollection(Repository repository)
         {
             this.repository = repository;
         }
@@ -39,7 +39,7 @@ namespace LibGit2Sharp
             get { return RemoteForName(name, false); }
         }
 
-        internal Remote RemoteForName(string name, bool shouldThrowIfNotFound = true)
+        public Remote RemoteForName(string name, bool shouldThrowIfNotFound = true)
         {
             Ensure.ArgumentNotNull(name, "name");
 

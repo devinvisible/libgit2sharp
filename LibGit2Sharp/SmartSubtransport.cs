@@ -83,7 +83,7 @@ namespace LibGit2Sharp
 
         private IntPtr nativeSubtransportPointer;
 
-        internal IntPtr GitSmartSubtransportPointer
+        public IntPtr GitSmartSubtransportPointer
         {
             get
             {

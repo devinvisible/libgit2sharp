@@ -1,6 +1,6 @@
 ﻿namespace LibGit2Sharp.Core.Handles
 {
-    internal class ReflogEntrySafeHandle : NotOwnedSafeHandleBase
+    public class ReflogEntrySafeHandle : NotOwnedSafeHandleBase
     {
     }
 }

@@ -74,7 +74,7 @@ namespace LibGit2Sharp.Core
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal abstract class SafeHandleBase : SafeHandle
+    public abstract class SafeHandleBase : SafeHandle
     {
 
 #if LEAKS_TRACKING

@@ -7,7 +7,7 @@ namespace LibGit2Sharp
     /// </summary>
     public abstract class FetchOptionsBase
     {
-        internal FetchOptionsBase()
+        public FetchOptionsBase()
         {
         }
 

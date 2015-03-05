@@ -2,7 +2,7 @@
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal static class DisposableExtensions
+    public static class DisposableExtensions
     {
         public static void SafeDispose(this IDisposable disposable)
         {

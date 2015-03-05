@@ -5,7 +5,7 @@ namespace LibGit2Sharp
     /// <summary>
     /// A merge head is a parent for the next commit.
     /// </summary>
-    internal class MergeHead : ReferenceWrapper<Commit>
+    public class MergeHead : ReferenceWrapper<Commit>
     {
         /// <summary>
         /// Needed for mocking purposes.
@@ -13,7 +13,7 @@ namespace LibGit2Sharp
         protected MergeHead()
         { }
 
-        internal MergeHead(Repository repo, ObjectId targetId, int index)
+        public MergeHead(Repository repo, ObjectId targetId, int index)
             : base(repo, new DirectReference(string.Format(CultureInfo.InvariantCulture, "MERGE_HEAD[{0}]", index), repo, targetId), r => r.CanonicalName)
         {
         }

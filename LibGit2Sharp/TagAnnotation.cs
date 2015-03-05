@@ -19,7 +19,7 @@ namespace LibGit2Sharp
         protected TagAnnotation()
         { }
 
-        internal TagAnnotation(Repository repo, ObjectId id)
+        public TagAnnotation(Repository repo, ObjectId id)
             : base(repo, id)
         {
             lazyName = GitObjectLazyGroup.Singleton(repo, id, Proxy.git_tag_name);

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace LibGit2Sharp.Core
 {
-    internal static class IntPtrExtensions
+    public static class IntPtrExtensions
     {
         public static T MarshalAs<T>(this IntPtr ptr, bool throwWhenNull = true)
         {

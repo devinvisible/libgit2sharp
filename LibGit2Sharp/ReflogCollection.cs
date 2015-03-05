@@ -16,7 +16,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class ReflogCollection : IEnumerable<ReflogEntry>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         private readonly string canonicalName;
 
@@ -31,7 +31,7 @@ namespace LibGit2Sharp
         /// </summary>
         /// <param name="repo">The repo.</param>
         /// <param name="canonicalName">the canonical name of the <see cref="Reference"/> to retrieve reflog entries on.</param>
-        internal ReflogCollection(Repository repo, string canonicalName)
+        public ReflogCollection(Repository repo, string canonicalName)
         {
             Ensure.ArgumentNotNullOrEmptyString(canonicalName, "canonicalName");
             Ensure.ArgumentNotNull(repo, "repo");

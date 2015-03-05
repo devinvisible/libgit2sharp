@@ -36,9 +36,9 @@ namespace LibGit2Sharp
         {
         }
 
-        internal LogLevel Level { get; private set; }
-        internal LogHandler Handler { get; private set; }
-        internal NativeMethods.git_trace_cb GitTraceCallback { get; private set; }
+        public LogLevel Level { get; private set; }
+        public LogHandler Handler { get; private set; }
+        public NativeMethods.git_trace_cb GitTraceCallback { get; private set; }
 
         /// <summary>
         /// This private method will be called from LibGit2 (from C code via

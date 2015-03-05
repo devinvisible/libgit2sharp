@@ -5,12 +5,12 @@ using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp.Core
 {
-    internal class RawContentStream : UnmanagedMemoryStream
+    public class RawContentStream : UnmanagedMemoryStream
     {
         private readonly GitObjectSafeHandle handle;
         private readonly ICollection<IDisposable> linkedResources;
 
-        internal unsafe RawContentStream(
+        public unsafe RawContentStream(
             GitObjectSafeHandle handle,
             Func<GitObjectSafeHandle, IntPtr> bytePtrProvider,
             Func<GitObjectSafeHandle, long> sizeProvider,

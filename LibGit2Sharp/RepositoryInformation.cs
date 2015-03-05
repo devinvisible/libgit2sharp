@@ -16,7 +16,7 @@ namespace LibGit2Sharp
         protected RepositoryInformation()
         { }
 
-        internal RepositoryInformation(Repository repo, bool isBare)
+        public RepositoryInformation(Repository repo, bool isBare)
         {
             this.repo = repo;
             IsBare = isBare;

@@ -20,7 +20,7 @@ namespace LibGit2Sharp
 
         private readonly Repository repository;
 
-        private ConfigurationSafeHandle configHandle;
+        public ConfigurationSafeHandle configHandle;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -28,7 +28,7 @@ namespace LibGit2Sharp
         protected Configuration()
         { }
 
-        internal Configuration(Repository repository, string globalConfigurationFileLocation,
+        public Configuration(Repository repository, string globalConfigurationFileLocation,
             string xdgConfigurationFileLocation, string systemConfigurationFileLocation)
         {
             this.repository = repository;
@@ -340,7 +340,7 @@ namespace LibGit2Sharp
             return BuildSignature(now, false);
         }
 
-        internal Signature BuildSignature(DateTimeOffset now, bool shouldThrowIfNotFound)
+        public Signature BuildSignature(DateTimeOffset now, bool shouldThrowIfNotFound)
         {
             const string userNameKey = "user.name";
             var name = this.GetValueOrDefault<string>(userNameKey);

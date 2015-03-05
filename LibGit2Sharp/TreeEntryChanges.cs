@@ -16,7 +16,7 @@ namespace LibGit2Sharp
         protected TreeEntryChanges()
         { }
 
-        internal TreeEntryChanges(GitDiffDelta delta)
+        public TreeEntryChanges(GitDiffDelta delta)
         {
             Path = LaxFilePathMarshaler.FromNative(delta.NewFile.Path).Native;
             OldPath = LaxFilePathMarshaler.FromNative(delta.OldFile.Path).Native;

@@ -7,7 +7,7 @@ namespace LibGit2Sharp.Core
     /// Managed structure corresponding to git_transfer_progress native structure.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitTransferProgress
+    public struct GitTransferProgress
     {
         public uint total_objects;
         public uint indexed_objects;

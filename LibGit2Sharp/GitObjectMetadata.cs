@@ -26,7 +26,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal GitObjectMetadata(long size, GitObjectType type)
+        public GitObjectMetadata(long size, GitObjectType type)
         {
             this.Size = size;
             this.type = type;

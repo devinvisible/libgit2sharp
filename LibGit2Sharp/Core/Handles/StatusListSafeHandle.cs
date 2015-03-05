@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class StatusListSafeHandle : SafeHandleBase
+    public class StatusListSafeHandle : SafeHandleBase
     {
         protected override bool ReleaseHandleImpl()
         {

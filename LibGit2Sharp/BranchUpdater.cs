@@ -18,7 +18,7 @@ namespace LibGit2Sharp
         protected BranchUpdater()
         { }
 
-        internal BranchUpdater(Repository repo, Branch branch)
+        public BranchUpdater(Repository repo, Branch branch)
         {
             Ensure.ArgumentNotNull(repo, "repo");
             Ensure.ArgumentNotNull(branch, "branch");

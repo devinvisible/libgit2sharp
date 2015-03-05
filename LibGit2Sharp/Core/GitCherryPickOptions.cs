@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitCherryPickOptions
+    public class GitCherryPickOptions
     {
         public uint Version = 1;
 

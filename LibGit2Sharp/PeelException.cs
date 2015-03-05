@@ -47,7 +47,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal PeelException(string message, GitErrorCode code, GitErrorCategory category)
+        public PeelException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

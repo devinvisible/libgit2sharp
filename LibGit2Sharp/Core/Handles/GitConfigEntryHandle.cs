@@ -1,6 +1,6 @@
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class GitConfigEntryHandle : SafeHandleBase
+    public class GitConfigEntryHandle : SafeHandleBase
     {
         public GitConfigEntry MarshalAsGitConfigEntry()
         {

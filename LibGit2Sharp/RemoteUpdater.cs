@@ -20,7 +20,7 @@ namespace LibGit2Sharp
         protected RemoteUpdater()
         { }
 
-        internal RemoteUpdater(Repository repo, Remote remote)
+        public RemoteUpdater(Repository repo, Remote remote)
         {
             Ensure.ArgumentNotNull(repo, "repo");
             Ensure.ArgumentNotNull(remote, "remote");

@@ -31,7 +31,7 @@ namespace LibGit2Sharp
         protected Submodule()
         { }
 
-        internal Submodule(Repository repo, string name, string path, string url)
+        public Submodule(Repository repo, string name, string path, string url)
         {
             this.repo = repo;
             this.name = name;

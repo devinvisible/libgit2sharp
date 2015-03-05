@@ -6,7 +6,7 @@ using System.Text;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitStrArray
+    public struct GitStrArray
     {
         /// <summary>
         /// A pointer to an array of null-terminated strings.

@@ -14,7 +14,7 @@ namespace LibGit2Sharp
         protected GitLink()
         { }
 
-        internal GitLink(Repository repo, ObjectId id)
+        public GitLink(Repository repo, ObjectId id)
             : base(repo, id)
         {
         }

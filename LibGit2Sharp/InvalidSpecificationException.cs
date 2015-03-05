@@ -49,7 +49,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal InvalidSpecificationException(string message, GitErrorCode code, GitErrorCategory category)
+        public InvalidSpecificationException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

@@ -22,7 +22,7 @@ namespace LibGit2Sharp
         protected RefSpecCollection()
         { }
 
-        internal RefSpecCollection(RemoteSafeHandle handle)
+        public RefSpecCollection(RemoteSafeHandle handle)
         {
             Ensure.ArgumentNotNull(handle, "handle");
 

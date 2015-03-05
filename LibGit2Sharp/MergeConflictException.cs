@@ -47,7 +47,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal MergeConflictException(string message, GitErrorCode code, GitErrorCategory category)
+        public MergeConflictException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

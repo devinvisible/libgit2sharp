@@ -11,7 +11,7 @@
         protected Tag()
         { }
 
-        internal Tag(Repository repo, Reference reference, string canonicalName)
+        public Tag(Repository repo, Reference reference, string canonicalName)
             : base(repo, reference, _ => canonicalName)
         {
         }

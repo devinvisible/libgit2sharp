@@ -1,6 +1,6 @@
 ﻿namespace LibGit2Sharp.Core.Handles
 {
-    internal class ReflogSafeHandle : SafeHandleBase
+    public class ReflogSafeHandle : SafeHandleBase
     {
         protected override bool ReleaseHandleImpl()
         {

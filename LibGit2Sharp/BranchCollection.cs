@@ -15,7 +15,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class BranchCollection : IEnumerable<Branch>
     {
-        internal readonly Repository repo;
+        public readonly Repository repo;
 
         /// <summary>
         /// Needed for mocking purposes.
@@ -27,7 +27,7 @@ namespace LibGit2Sharp
         /// Initializes a new instance of the <see cref="BranchCollection"/> class.
         /// </summary>
         /// <param name="repo">The repo.</param>
-        internal BranchCollection(Repository repo)
+        public BranchCollection(Repository repo)
         {
             this.repo = repo;
         }

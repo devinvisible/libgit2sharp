@@ -20,7 +20,7 @@ namespace LibGit2Sharp
         protected ContentChanges()
         { }
 
-        internal ContentChanges(Repository repo, Blob oldBlob, Blob newBlob, GitDiffOptions options)
+        public ContentChanges(Repository repo, Blob oldBlob, Blob newBlob, GitDiffOptions options)
         {
             Proxy.git_diff_blobs(repo.Handle,
                                  oldBlob != null ? oldBlob.Id : null,
@@ -28,12 +28,12 @@ namespace LibGit2Sharp
                                  options, FileCallback, HunkCallback, LineCallback);
         }
 
-        internal ContentChanges(bool isBinaryComparison)
+        public ContentChanges(bool isBinaryComparison)
         {
             this.IsBinaryComparison = isBinaryComparison;
         }
 
-        internal void AppendToPatch(string patch)
+        public void AppendToPatch(string patch)
         {
             patchBuilder.Append(patch);
         }
@@ -41,12 +41,12 @@ namespace LibGit2Sharp
         /// <summary>
         /// The number of lines added.
         /// </summary>
-        public virtual int LinesAdded { get; internal set; }
+        public virtual int LinesAdded { get;  set; }
 
         /// <summary>
         /// The number of lines deleted.
         /// </summary>
-        public virtual int LinesDeleted { get; internal set; }
+        public virtual int LinesDeleted { get;  set; }
 
         /// <summary>
         /// The patch corresponding to these changes.

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using LibGit2Sharp.Core;
+using LibGit2Sharp.Core.Handles;
 using LibGit2Sharp.Tests.TestHelpers;
 using Xunit;
 
@@ -46,10 +49,30 @@ namespace LibGit2Sharp.Tests
         [Fact]
         public void CanUnsetAnEntryFromTheLocalConfiguration()
         {
-            string path = SandboxStandardTestRepo();
+            string path = InitNewRepository();
             using (var repo = new Repository(path))
             {
-                Assert.Null(repo.Config.Get<bool>("unittests.boolsetting"));
+                using (Proxy.ThreadAffinity())
+                {
+                    ConfigurationSafeHandle handle1;
+                    int res1 = NativeMethods.git_config_snapshot(out handle1, repo.Config.configHandle);
+                    Ensure.ZeroResult(res1);
+
+                    using (ConfigurationSafeHandle snapshot = handle1)
+                    {
+                        GitConfigEntryHandle handle = null;
+
+                        try
+                        {
+                            var res = NativeMethods.git_config_get_entry(out handle, snapshot, "unittests.boolsetting");
+                            Assert.Equal((int)GitErrorCode.NotFound, res);
+                        }
+                        finally
+                        {
+                            handle.SafeDispose();
+                        }
+                    }
+                }
 
                 repo.Config.Set("unittests.boolsetting", true);
                 Assert.True(repo.Config.Get<bool>("unittests.boolsetting").Value);

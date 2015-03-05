@@ -2,7 +2,7 @@
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class StatusEntrySafeHandle : NotOwnedSafeHandleBase
+    public class StatusEntrySafeHandle : NotOwnedSafeHandleBase
     {
         public StatusEntrySafeHandle()
             : base()

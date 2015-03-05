@@ -20,7 +20,7 @@ namespace LibGit2Sharp
         /// </summary>
         protected BlameHunkCollection() { }
 
-        internal BlameHunkCollection(Repository repo, RepositorySafeHandle repoHandle, string path, BlameOptions options)
+        public BlameHunkCollection(Repository repo, RepositorySafeHandle repoHandle, string path, BlameOptions options)
         {
             this.repo = repo;
 

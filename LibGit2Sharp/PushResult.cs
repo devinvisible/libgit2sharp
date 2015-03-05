@@ -36,7 +36,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal PushResult(List<PushStatusError> failedPushUpdates)
+        public PushResult(List<PushStatusError> failedPushUpdates)
         {
             this.failedPushUpdates = failedPushUpdates ?? new List<PushStatusError>();
         }

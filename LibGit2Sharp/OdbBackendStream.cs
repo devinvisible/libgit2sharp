@@ -92,7 +92,7 @@ namespace LibGit2Sharp
         private readonly OdbBackend backend;
         private IntPtr nativeBackendStreamPointer;
 
-        internal IntPtr GitOdbBackendStreamPointer
+        public IntPtr GitOdbBackendStreamPointer
         {
             get
             {

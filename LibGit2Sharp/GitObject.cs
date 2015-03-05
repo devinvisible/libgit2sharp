@@ -13,7 +13,7 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public abstract class GitObject : IEquatable<GitObject>, IBelongToARepository
     {
-        internal static IDictionary<Type, ObjectType> TypeToKindMap =
+        public static IDictionary<Type, ObjectType> TypeToKindMap =
             new Dictionary<Type, ObjectType>
                 {
                     { typeof(Commit), ObjectType.Commit },
@@ -60,7 +60,7 @@ namespace LibGit2Sharp
             get { return Id.Sha; }
         }
 
-        internal static GitObject BuildFrom(Repository repo, ObjectId id, GitObjectType type, FilePath path)
+        public static GitObject BuildFrom(Repository repo, ObjectId id, GitObjectType type, FilePath path)
         {
             switch (type)
             {
@@ -77,7 +77,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal Commit DereferenceToCommit(bool throwsIfCanNotBeDereferencedToACommit)
+        public Commit DereferenceToCommit(bool throwsIfCanNotBeDereferencedToACommit)
         {
             using (GitObjectSafeHandle peeledHandle = Proxy.git_object_peel(repo.Handle, Id, GitObjectType.Commit, throwsIfCanNotBeDereferencedToACommit))
             {

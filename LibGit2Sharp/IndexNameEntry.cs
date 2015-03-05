@@ -22,7 +22,7 @@ namespace LibGit2Sharp
         protected IndexNameEntry()
         { }
 
-        internal static IndexNameEntry BuildFromPtr(IndexNameEntrySafeHandle handle)
+        public static IndexNameEntry BuildFromPtr(IndexNameEntrySafeHandle handle)
         {
             if (handle == null || handle.IsZero)
             {

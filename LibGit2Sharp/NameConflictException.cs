@@ -46,7 +46,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal NameConflictException(string message, GitErrorCode code, GitErrorCategory category)
+        public NameConflictException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

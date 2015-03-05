@@ -33,7 +33,7 @@ namespace LibGit2Sharp
         protected Commit()
         { }
 
-        internal Commit(Repository repo, ObjectId id)
+        public Commit(Repository repo, ObjectId id)
             : base(repo, id)
         {
             lazyTree = GitObjectLazyGroup.Singleton(this.repo, id, obj => new Tree(this.repo, Proxy.git_commit_tree_id(obj), null));

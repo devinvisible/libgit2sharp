@@ -31,7 +31,7 @@ namespace LibGit2Sharp
         public virtual void AfterArchiving(Tree tree, ObjectId oid, DateTimeOffset modificationTime)
         { }
 
-        internal void OrchestrateArchiving(Tree tree, ObjectId oid, DateTimeOffset modificationTime)
+        public void OrchestrateArchiving(Tree tree, ObjectId oid, DateTimeOffset modificationTime)
         {
             BeforeArchiving(tree, oid, modificationTime);
 

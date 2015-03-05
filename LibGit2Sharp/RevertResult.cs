@@ -16,7 +16,7 @@ namespace LibGit2Sharp
         protected RevertResult()
         { }
 
-        internal RevertResult(RevertStatus status, Commit commit = null)
+        public RevertResult(RevertStatus status, Commit commit = null)
         {
             Commit = commit;
             Status = status;

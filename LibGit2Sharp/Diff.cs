@@ -74,7 +74,7 @@ namespace LibGit2Sharp
         protected Diff()
         { }
 
-        internal Diff(Repository repo)
+        public Diff(Repository repo)
         {
             this.repo = repo;
         }
@@ -238,7 +238,7 @@ namespace LibGit2Sharp
             return Compare<T>(includeUntracked ? DiffModifiers.IncludeUntracked : DiffModifiers.None, paths, explicitPathsOptions, compareOptions);
         }
 
-        internal virtual T Compare<T>(DiffModifiers diffOptions, IEnumerable<string> paths = null,
+        public virtual T Compare<T>(DiffModifiers diffOptions, IEnumerable<string> paths = null,
                                      ExplicitPathsOptions explicitPathsOptions = null, CompareOptions compareOptions = null) where T : class
         {
             Func<DiffSafeHandle, object> builder;
@@ -270,7 +270,7 @@ namespace LibGit2Sharp
             }
         }
 
-        internal delegate DiffSafeHandle TreeComparisonHandleRetriever(ObjectId oldTreeId, ObjectId newTreeId, GitDiffOptions options);
+        public delegate DiffSafeHandle TreeComparisonHandleRetriever(ObjectId oldTreeId, ObjectId newTreeId, GitDiffOptions options);
 
         private static TreeComparisonHandleRetriever TreeToTree(Repository repo)
         {

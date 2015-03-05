@@ -26,7 +26,7 @@ namespace LibGit2Sharp
         protected Conflict()
         { }
 
-        internal Conflict(IndexEntry ancestor, IndexEntry ours, IndexEntry theirs)
+        public Conflict(IndexEntry ancestor, IndexEntry ours, IndexEntry theirs)
         {
             this.ancestor = ancestor;
             this.ours = ours;

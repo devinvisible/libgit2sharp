@@ -20,7 +20,7 @@ namespace LibGit2Sharp
         protected Version()
         { }
 
-        internal static Version Build()
+        public static Version Build()
         {
             return new Version();
         }

@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         protected TreeEntry()
         { }
 
-        internal TreeEntry(SafeHandle obj, ObjectId parentTreeId, Repository repo, FilePath parentPath)
+        public TreeEntry(SafeHandle obj, ObjectId parentTreeId, Repository repo, FilePath parentPath)
         {
             this.parentTreeId = parentTreeId;
             this.repo = repo;
@@ -62,7 +62,7 @@ namespace LibGit2Sharp
         /// </summary>
         public virtual GitObject Target { get { return target.Value; } }
 
-        internal ObjectId TargetId
+        public ObjectId TargetId
         {
             get { return targetOid; }
         }

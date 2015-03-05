@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         protected IndexReucEntry()
         { }
 
-        internal static IndexReucEntry BuildFromPtr(IndexReucEntrySafeHandle handle)
+        public static IndexReucEntry BuildFromPtr(IndexReucEntrySafeHandle handle)
         {
             if (handle == null || handle.IsZero)
             {

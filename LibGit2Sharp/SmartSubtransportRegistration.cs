@@ -18,7 +18,7 @@ namespace LibGit2Sharp
         /// in libgit2.
         /// </summary>
         /// <param name="scheme">The URL scheme (eg "http") to register</param>
-        internal SmartSubtransportRegistration(string scheme)
+        public SmartSubtransportRegistration(string scheme)
         {
             Scheme = scheme;
             RegistrationPointer = CreateRegistrationPointer();
@@ -34,13 +34,13 @@ namespace LibGit2Sharp
             private set;
         }
 
-        internal IntPtr RegistrationPointer
+        public IntPtr RegistrationPointer
         {
             get;
             private set;
         }
 
-        internal IntPtr FunctionPointer
+        public IntPtr FunctionPointer
         {
             get;
             private set;
@@ -64,7 +64,7 @@ namespace LibGit2Sharp
             return Marshal.GetFunctionPointerForDelegate(EntryPoints.TransportCallback);
         }
 
-        internal void Free()
+        public void Free()
         {
             Marshal.FreeHGlobal(RegistrationPointer);
             RegistrationPointer = IntPtr.Zero;

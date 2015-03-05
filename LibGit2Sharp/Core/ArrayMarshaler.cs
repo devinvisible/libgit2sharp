@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace LibGit2Sharp.Core
 {
-    internal class ArrayMarshaler<T> : IDisposable
+    public class ArrayMarshaler<T> : IDisposable
     {
         private readonly IntPtr[] ptrs;
 

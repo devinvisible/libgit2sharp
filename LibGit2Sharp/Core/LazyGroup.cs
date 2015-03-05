@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibGit2Sharp.Core
 {
-    internal abstract class LazyGroup<T>
+    public abstract class LazyGroup<T>
     {
         private readonly IList<IEvaluator<T>> evaluators = new List<IEvaluator<T>>();
         private readonly object @lock = new object();

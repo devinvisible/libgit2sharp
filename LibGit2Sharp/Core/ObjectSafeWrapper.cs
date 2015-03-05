@@ -3,7 +3,7 @@ using LibGit2Sharp.Core.Handles;
 
 namespace LibGit2Sharp.Core
 {
-    internal class ObjectSafeWrapper : IDisposable
+    public class ObjectSafeWrapper : IDisposable
     {
         private readonly GitObjectSafeHandle objectPtr;
 

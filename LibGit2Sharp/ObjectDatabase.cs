@@ -25,7 +25,7 @@ namespace LibGit2Sharp
         protected ObjectDatabase()
         { }
 
-        internal ObjectDatabase(Repository repo)
+        public ObjectDatabase(Repository repo)
         {
             this.repo = repo;
             handle = Proxy.git_repository_odb(repo.Handle);

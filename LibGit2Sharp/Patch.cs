@@ -30,7 +30,7 @@ namespace LibGit2Sharp
         protected Patch()
         { }
 
-        internal Patch(DiffSafeHandle diff)
+        public Patch(DiffSafeHandle diff)
         {
             int count = Proxy.git_diff_num_deltas(diff);
             for (int i = 0; i < count; i++)

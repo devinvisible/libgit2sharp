@@ -3,7 +3,7 @@ using System;
 namespace LibGit2Sharp.Core
 {
     [Flags]
-    internal enum LookUpOptions
+    public enum LookUpOptions
     {
         None = 0,
         ThrowWhenNoGitObjectHasBeenFound = 1,

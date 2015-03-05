@@ -31,7 +31,7 @@ namespace LibGit2Sharp
         protected RefSpec()
         { }
 
-        internal static RefSpec BuildFromPtr(GitRefSpecHandle handle)
+        public static RefSpec BuildFromPtr(GitRefSpecHandle handle)
         {
             Ensure.ArgumentNotNull(handle, "handle");
 

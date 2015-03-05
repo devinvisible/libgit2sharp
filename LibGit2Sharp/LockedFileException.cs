@@ -46,7 +46,7 @@ namespace LibGit2Sharp
         {
         }
 
-        internal LockedFileException(string message, GitErrorCode code, GitErrorCategory category)
+        public LockedFileException(string message, GitErrorCode code, GitErrorCategory category)
             : base(message, code, category)
         {
         }

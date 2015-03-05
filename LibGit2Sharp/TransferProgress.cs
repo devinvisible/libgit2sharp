@@ -21,7 +21,7 @@ namespace LibGit2Sharp
         /// <summary>
         /// Constructor.
         /// </summary>
-        internal TransferProgress(GitTransferProgress gitTransferProgress)
+        public TransferProgress(GitTransferProgress gitTransferProgress)
         {
             this.gitTransferProgress = gitTransferProgress;
         }

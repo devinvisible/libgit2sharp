@@ -2,7 +2,7 @@ using System;
 
 namespace LibGit2Sharp.Core.Handles
 {
-    internal class NullRepositorySafeHandle : SafeHandleBase
+    public class NullRepositorySafeHandle : SafeHandleBase
     {
         public NullRepositorySafeHandle()
         {

@@ -32,7 +32,7 @@ namespace LibGit2Sharp
         /// <param name="repo">The repository.</param>
         /// <param name="reference">The reference.</param>
         /// <param name="canonicalNameSelector">A function to construct the reference's canonical name.</param>
-        protected internal ReferenceWrapper(Repository repo, Reference reference, Func<Reference, string> canonicalNameSelector)
+         public ReferenceWrapper(Repository repo, Reference reference, Func<Reference, string> canonicalNameSelector)
         {
             Ensure.ArgumentNotNull(repo, "repo");
             Ensure.ArgumentNotNull(reference, "reference");

@@ -18,7 +18,7 @@ namespace LibGit2Sharp
         private static readonly LambdaEqualityHelper<Signature> equalityHelper =
             new LambdaEqualityHelper<Signature>(x => x.Name, x => x.Email, x => x.When);
 
-        internal Signature(IntPtr signaturePtr)
+        public Signature(IntPtr signaturePtr)
         {
             var handle = signaturePtr.MarshalAs<GitSignature>();
 
@@ -45,7 +45,7 @@ namespace LibGit2Sharp
             this.when = when;
         }
 
-        internal SignatureSafeHandle BuildHandle()
+        public SignatureSafeHandle BuildHandle()
         {
             return Proxy.git_signature_new(name, email, when);
         }

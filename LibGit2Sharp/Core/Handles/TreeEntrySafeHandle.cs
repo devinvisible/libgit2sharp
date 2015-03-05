@@ -1,6 +1,6 @@
 ﻿namespace LibGit2Sharp.Core.Handles
 {
-    internal class TreeEntrySafeHandle : NotOwnedSafeHandleBase
+    public class TreeEntrySafeHandle : NotOwnedSafeHandleBase
     {
     }
 }

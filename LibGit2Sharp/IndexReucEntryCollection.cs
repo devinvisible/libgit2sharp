@@ -22,7 +22,7 @@ namespace LibGit2Sharp
         protected IndexReucEntryCollection()
         { }
 
-        internal IndexReucEntryCollection(Repository repo)
+        public IndexReucEntryCollection(Repository repo)
         {
             this.repo = repo;
         }

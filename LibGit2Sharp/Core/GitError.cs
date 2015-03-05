@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitError
+    public class GitError
     {
         public IntPtr Message;
         public GitErrorCategory Category;

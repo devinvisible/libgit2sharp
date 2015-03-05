@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct GitMergeOpts
+    public struct GitMergeOpts
     {
         public uint Version;
 
@@ -23,7 +23,7 @@ namespace LibGit2Sharp.Core
 
         /// <summary>
         /// Pluggable similarityMetric; pass IntPtr.Zero
-        /// to use internal metric.
+        /// to use public metric.
         /// </summary>
         public IntPtr SimilarityMetric;
 
@@ -37,7 +37,7 @@ namespace LibGit2Sharp.Core
     /// The results of `git_merge_analysis` indicate the merge opportunities.
     /// </summary>
     [Flags]
-    internal enum GitMergeAnalysis
+    public enum GitMergeAnalysis
     {
         /// <summary>
         /// No merge is possible.  (Unused.)
@@ -71,7 +71,7 @@ namespace LibGit2Sharp.Core
         GIT_MERGE_ANALYSIS_UNBORN = (1 << 3),
     }
 
-    internal enum GitMergePreference
+    public enum GitMergePreference
     {
         /// <summary>
         /// No configuration was found that suggests a preferred behavior for
@@ -93,7 +93,7 @@ namespace LibGit2Sharp.Core
     }
 
     [Flags]
-    internal enum GitMergeTreeFlags
+    public enum GitMergeTreeFlags
     {
         /// <summary>
         /// No options.

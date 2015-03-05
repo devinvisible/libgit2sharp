@@ -7,7 +7,7 @@ using System.Text;
 namespace LibGit2Sharp.Core
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitStatusOptions : IDisposable
+    public class GitStatusOptions : IDisposable
     {
         public uint Version = 1;
 
@@ -22,7 +22,7 @@ namespace LibGit2Sharp.Core
         }
     }
 
-    internal enum GitStatusShow
+    public enum GitStatusShow
     {
         IndexAndWorkDir = 0,
         IndexOnly = 1,
@@ -30,7 +30,7 @@ namespace LibGit2Sharp.Core
     }
 
     [Flags]
-    internal enum GitStatusOptionFlags
+    public enum GitStatusOptionFlags
     {
         IncludeUntracked = (1 << 0),
         IncludeIgnored = (1 << 1),

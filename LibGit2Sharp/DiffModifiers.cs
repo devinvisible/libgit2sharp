@@ -7,7 +7,7 @@ namespace LibGit2Sharp
     /// when performing the comparison.
     /// </summary>
     [Flags]
-    internal enum DiffModifiers
+    public enum DiffModifiers
     {
         /// <summary>
         /// No special behavior.

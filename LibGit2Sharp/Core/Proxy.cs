@@ -11,7 +11,7 @@ using LibGit2Sharp.Handlers;
 // ReSharper disable InconsistentNaming
 namespace LibGit2Sharp.Core
 {
-    internal class Proxy
+    public class Proxy
     {
         #region giterr_
 
@@ -272,7 +272,7 @@ namespace LibGit2Sharp.Core
 
         #region git_cherry_pick_
 
-        internal static void git_cherrypick(RepositorySafeHandle repo, ObjectId commit, GitCherryPickOptions options)
+        public static void git_cherrypick(RepositorySafeHandle repo, ObjectId commit, GitCherryPickOptions options)
         {
             using (ThreadAffinity())
             using (var nativeCommit = git_object_lookup(repo, commit, GitObjectType.Commit))
@@ -3362,9 +3362,9 @@ namespace LibGit2Sharp.Core
             }
         }
 
-        private static Func<IDisposable> ThreadAffinity = WithoutThreadAffinity;
+        public static Func<IDisposable> ThreadAffinity = WithoutThreadAffinity;
 
-        internal static void EnableThreadAffinity()
+        public static void EnableThreadAffinity()
         {
             ThreadAffinity = WithThreadAffinity;
         }
@@ -3392,7 +3392,7 @@ namespace LibGit2Sharp.Core
             }
         }
 
-        private static readonly IDictionary<Type, Func<string, object>> configurationParser = new Dictionary<Type, Func<string, object>>
+        public static readonly IDictionary<Type, Func<string, object>> configurationParser = new Dictionary<Type, Func<string, object>>
         {
             { typeof(int), value => git_config_parse_int32(value) },
             { typeof(long), value => git_config_parse_int64(value) },
@@ -3408,7 +3408,7 @@ namespace LibGit2Sharp.Core
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        internal static int ConvertResultToCancelFlag(bool result)
+        public static int ConvertResultToCancelFlag(bool result)
         {
             return result ? 0 : (int)GitErrorCode.User;
         }

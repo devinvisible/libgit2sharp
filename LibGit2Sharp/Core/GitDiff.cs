@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace LibGit2Sharp.Core
 {
     [Flags]
-    internal enum GitDiffOptionFlags
+    public enum GitDiffOptionFlags
     {
         /// <summary>
         /// Normal diff, the default
@@ -184,14 +184,14 @@ namespace LibGit2Sharp.Core
         GIT_DIFF_SHOW_BINARY = (1 << 30),
     }
 
-    internal delegate int diff_notify_cb(
+    public delegate int diff_notify_cb(
         IntPtr diff_so_far,
         IntPtr delta_to_add,
         IntPtr matched_pathspec,
         IntPtr payload);
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffOptions : IDisposable
+    public class GitDiffOptions : IDisposable
     {
         public uint Version = 1;
         public GitDiffOptionFlags Flags;
@@ -219,7 +219,7 @@ namespace LibGit2Sharp.Core
     }
 
     [Flags]
-    internal enum GitDiffFlags
+    public enum GitDiffFlags
     {
         GIT_DIFF_FLAG_BINARY = (1 << 0),
         GIT_DIFF_FLAG_NOT_BINARY = (1 << 1),
@@ -227,7 +227,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffFile
+    public class GitDiffFile
     {
         public GitOid Id;
         public IntPtr Path;
@@ -237,7 +237,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffDelta
+    public class GitDiffDelta
     {
         public ChangeKind Status;
         public GitDiffFlags Flags;
@@ -248,7 +248,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffHunk
+    public class GitDiffHunk
     {
         public int OldStart;
         public int OldLines;
@@ -261,7 +261,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffLine
+    public class GitDiffLine
     {
         public GitDiffLineOrigin lineOrigin;
         public int OldLineNo;
@@ -272,7 +272,7 @@ namespace LibGit2Sharp.Core
         public IntPtr content;
     }
 
-    enum GitDiffLineOrigin : byte
+    public enum GitDiffLineOrigin : byte
     {
         GIT_DIFF_LINE_CONTEXT = 0x20, //' ',
         GIT_DIFF_LINE_ADDITION = 0x2B, //'+',
@@ -286,7 +286,7 @@ namespace LibGit2Sharp.Core
         GIT_DIFF_LINE_BINARY = 0x42, //'B',
     }
 
-    enum GitDiffFormat
+    public enum GitDiffFormat
     {
         GIT_DIFF_FORMAT_PATCH        = 1, // < full git diff
         GIT_DIFF_FORMAT_PATCH_HEADER = 2, // < just the file headers of patch
@@ -296,7 +296,7 @@ namespace LibGit2Sharp.Core
     }
 
     [Flags]
-    enum GitDiffFindFlags
+    public enum GitDiffFindFlags
     {
         // Obey `diff.renames`. Overridden by any other GIT_DIFF_FIND_... flag.
         GIT_DIFF_FIND_BY_CONFIG = 0,
@@ -342,7 +342,7 @@ namespace LibGit2Sharp.Core
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class GitDiffFindOptions
+    public class GitDiffFindOptions
     {
         public uint Version = 1;
         public GitDiffFindFlags Flags;

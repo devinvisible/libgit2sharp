@@ -38,7 +38,7 @@ namespace LibGit2Sharp
         /// </summary>
         public object Since { get; set; }
 
-        internal IList<object> SinceList
+        public IList<object> SinceList
         {
             get { return ToList(Since); }
         }
@@ -53,7 +53,7 @@ namespace LibGit2Sharp
         /// </summary>
         public object Until { get; set; }
 
-        internal IList<object> UntilList
+        public IList<object> UntilList
         {
             get { return ToList(Until); }
         }
