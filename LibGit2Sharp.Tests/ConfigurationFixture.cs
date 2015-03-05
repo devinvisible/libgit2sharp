@@ -52,27 +52,16 @@ namespace LibGit2Sharp.Tests
             string path = InitNewRepository();
             using (var repo = new Repository(path))
             {
-                using (Proxy.ThreadAffinity())
-                {
-                    ConfigurationSafeHandle handle1;
-                    int res1 = NativeMethods.git_config_snapshot(out handle1, repo.Config.configHandle);
-                    Ensure.ZeroResult(res1);
+                var configurationSafeHandle = repo.Config.configHandle;
 
-                    using (ConfigurationSafeHandle snapshot = handle1)
-                    {
-                        GitConfigEntryHandle handle = null;
-
-                        try
-                        {
-                            var res = NativeMethods.git_config_get_entry(out handle, snapshot, "unittests.boolsetting");
-                            Assert.Equal((int)GitErrorCode.NotFound, res);
-                        }
-                        finally
-                        {
-                            handle.SafeDispose();
-                        }
-                    }
-                }
+                ConfigurationSafeHandle snap1;
+                int res1 = NativeMethods.git_config_snapshot(out snap1, configurationSafeHandle);
+                Ensure.ZeroResult(res1);
+                GitConfigEntryHandle handle;
+                var res = NativeMethods.git_config_get_entry(out handle, snap1, "unittests.boolsetting");
+                Assert.Equal((int)GitErrorCode.NotFound, res);
+                handle.SafeDispose();
+                snap1.SafeDispose();
 
                 repo.Config.Set("unittests.boolsetting", true);
                 Assert.True(repo.Config.Get<bool>("unittests.boolsetting").Value);
