@@ -65,13 +65,13 @@ namespace LibGit2Sharp.Tests
                 snap1.SafeDispose();
 
                 // Let's set it
-                ConfigurationSafeHandle levelHandle;
-                int res2 = NativeMethods.git_config_open_level(out levelHandle, configurationSafeHandle,
+                ConfigurationSafeHandle levelHandle1;
+                int res2 = NativeMethods.git_config_open_level(out levelHandle1, configurationSafeHandle,
                     (uint)ConfigurationLevel.Local);
                 Assert.Equal((int)GitErrorCode.Ok, res2);
-                int res3 = NativeMethods.git_config_set_bool(levelHandle, "unittests.boolsetting", true);
+                int res3 = NativeMethods.git_config_set_bool(levelHandle1, "unittests.boolsetting", true);
                 Assert.Equal((int)GitErrorCode.Ok, res3);
-                levelHandle.SafeDispose();
+                levelHandle1.SafeDispose();
 
 
                 // Config entry exists!
@@ -91,7 +91,17 @@ namespace LibGit2Sharp.Tests
                 Assert.True(value);
                 snap2.SafeDispose();
 
-                repo.Config.Unset("unittests.boolsetting");
+                // Let's drop it
+                ConfigurationSafeHandle levelHandle2;
+                int res7 = NativeMethods.git_config_open_level(out levelHandle2, configurationSafeHandle,
+                    (uint)ConfigurationLevel.Local);
+                Assert.Equal((int)GitErrorCode.Ok, res7);
+                int res8 = NativeMethods.git_config_delete_entry(levelHandle2, "unittests.boolsetting");
+
+                // Duh. race condition
+                Ensure.ZeroResult(res8);
+
+                levelHandle2.SafeDispose();
 
                 Assert.Null(repo.Config.Get<bool>("unittests.boolsetting"));
             }
